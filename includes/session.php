@@ -2,8 +2,8 @@
 	include 'includes/conn.php';
 	session_start();
 
-	if(isset($_SESSION['provider'])){
-		header('location: providers/dashboard.php');
+	if(isset($_SESSION['providers'])){
+		header('location: provider/dashboard.php');
 	}
 
 	if(isset($_SESSION['user'])){
