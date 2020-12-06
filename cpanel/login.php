@@ -73,11 +73,17 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" name="login" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" name="login" class="btn btn-primary btn-block">Log In</button>
           </div>
           <!-- /.col -->
         </div>
-      </form>
+      </form><br>
+      <div class="social-auth-links text-center mt-2 mb-3">
+        <a href="../index.php" class="btn btn-block btn-default">
+          Go to public page
+        </a>
+        
+      </div>
 
     </div>
     <!-- /.card-body -->

@@ -85,7 +85,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
+            <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
           </div>
           <!-- /.col -->
         </div>
