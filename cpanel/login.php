@@ -1,12 +1,13 @@
+<?php include 'includes/session.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Log in (v2)</title>
+  <title>Helpcare | Login</title>
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> -->
   <!-- Font Awesome -->
   <link rel="stylesheet" href="./../plugins/fontawesome-free/css/all.min.css">
   <!-- icheck bootstrap -->
@@ -16,19 +17,37 @@
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
+<?php
+      if(isset($_SESSION['error'])){
+        echo "
+          <div class='callout callout-danger text-center'>
+            <p>".$_SESSION['error']."</p> 
+          </div>
+        ";
+        unset($_SESSION['error']);
+      }
+      if(isset($_SESSION['success'])){
+        echo "
+          <div class='callout callout-success text-center'>
+            <p>".$_SESSION['success']."</p> 
+          </div>
+        ";
+        unset($_SESSION['success']);
+      }
+    ?>
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="./index2.html" class="h1"><i class="fas fa-heartbeat" style="color: #3d9970;
+      <a href="#" class="h1"><i class="fas fa-heartbeat" style="color: #3d9970;
     "></i><b style="color: #3d9970;
     "> Help</b>care</a> CPanel
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="./index3.html" method="post">
+      <form action="verify.php" method="post">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="email" class="form-control" name="email" value="admin@admin.com" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -36,7 +55,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" class="form-control" name="password" value="password" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -54,20 +73,18 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" name="login" class="btn btn-primary btn-block">Sign In</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
 
-      <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new account</a>
-      </p>
     </div>
     <!-- /.card-body -->
   </div>
   <!-- /.card -->
-</div>
+</div><br>
+2020 &copy; Helpcare CPanel v1 | Developers : 
 <!-- /.login-box -->
 
 <!-- jQuery -->
