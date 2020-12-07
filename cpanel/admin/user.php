@@ -72,25 +72,44 @@
             <i class="nav-icon fas fa-users"></i>
               <p>Users</p>
             </a>
-          </li>
+          <!-- </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
               <p>Category</p>
             </a>
-          </li>
-          <li class="nav-item">
+          </li> -->
+          <!-- <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="nav-icon fas fa-people-arrows"></i>
               <p>Providers</p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a href="#" class="nav-link">
-            <i class="nav-icon far fa-newspaper"></i>
-              <p>Services</p>
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Providers
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span> -->
+              </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/layout/top-nav.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Categories</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Services</p>
+                </a>
+              </li>
+            </ul>
           </li>
+         
           <li class="nav-item">
             <a href="../logout.php" class="nav-link">
             <i class="nav-icon fas fa-sign-out-alt"></i>
