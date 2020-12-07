@@ -180,8 +180,8 @@
                             <td>".date('M d, Y', strtotime($row['created_on']))."</td>
                             <td>
                               <a href='#' class='btn btn-info btn-sm btn-flat'><i class='fa fa-search'></i> Book</a>
-                              <button class='btn btn-success btn-sm edit btn-flat' data-id='#'><i class='fa fa-edit'></i> Edit</button>
-                              <button class='btn btn-danger btn-sm delete btn-flat' data-id='#'><i class='fa fa-trash'></i> Delete</button>
+                              <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
+                              <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
                             </td>
                           </tr>
                         ";
@@ -235,7 +235,7 @@
 <?php include 'includes/users_modal.php'; ?>
 
 <!-- ./wrapper -->
-
+<?php include 'includes/scripts.php'; ?>
 <!-- REQUIRED SCRIPTS -->
 <script>
 $(function(){
