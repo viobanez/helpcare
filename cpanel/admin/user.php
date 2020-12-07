@@ -102,6 +102,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="categories.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Service Owners</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Services</p>
