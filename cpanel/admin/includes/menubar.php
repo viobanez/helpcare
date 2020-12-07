@@ -36,7 +36,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="users.php" class="nav-link">
+            <a href="user.php" class="nav-link">
             <i class="nav-icon fas fa-users"></i>
               <p>Users</p>
             </a>
