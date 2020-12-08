@@ -1,9 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary ">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <!-- <img src="#" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
-       <span class="brand-text font-weight-light"><i class="fas fa-heartbeat" style="color: #3d9970;
-    "></i> Helpcare CPanel</span>
+      <img src="../images/logo.png" alt="AdminLTE Logo" style="width: 230px;" >
+       <span class="brand-text font-weight-light"></span>
     </a>
 
     <!-- Sidebar -->
@@ -25,36 +24,17 @@
           <li class="nav-header">Menu</li>
           <li class="nav-item">
             <a href="dashboard.php" class="nav-link">
-              <i class="nav-icon far fa-image"></i>
+            <i class="nav-icon fas fa-newspaper"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
-
-          <li class="nav-item">
-            <a href="user.php" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
-              <p>Users</p>
-            </a>
-          </li>
-          <!-- <li class="nav-item">
-            <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
-              <p>Category</p>
-            </a>
-          </li> -->
-          <!-- <li class="nav-item">
-            <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-people-arrows"></i>
-              <p>Providers</p>
-            </a>
-          </li> -->
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>
-                Providers
+                Users
                 <i class="fas fa-angle-left right"></i>
                 <!-- <span class="badge badge-info right">6</span> -->
               </p>
@@ -62,24 +42,119 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="categories.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Categories</p>
+                <i class=" nav-icon">-</i>
+                  <p>Clients</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="categories.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Service Owners</p>
+                <i class=" nav-icon">-</i>
+                  <p>Service Providers</p>
+                </a>
+              </li>
+            
+            </ul>
+          </li>
+        
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-pager"></i>
+              <p>
+                Services
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span> -->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="categories.php" class="nav-link">
+                <i class=" nav-icon">-</i>
+                  <p>Category</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Services</p>
+                <a href="categories.php" class="nav-link">
+                <i class=" nav-icon">-</i>
+                  <p>Sub Category </p>
                 </a>
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Transactions
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span> -->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="categories.php" class="nav-link">
+                <i class=" nav-icon">-</i>
+                  <p>Appointment</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="categories.php" class="nav-link">
+                <i class=" nav-icon">-</i>
+                  <p>Bookings</p>
+                </a>
+              </li>
+             
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-mail-bulk"></i>
+              <p>
+                Feedback
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span> -->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="categories.php" class="nav-link">
+                <i class=" nav-icon">-</i>
+                  <p>Reviews</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="categories.php" class="nav-link">
+                <i class=" nav-icon">-</i>
+                  <p>Ratings</p>
+                </a>
+              </li>
+             
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="../logout.php" class="nav-link">
+            <i class="nav-icon fas fa-money-check-alt"></i>
+              <p>Pricing</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../logout.php" class="nav-link">
+            <i class="nav-icon fas fa-cogs"></i>
+              <p>Utilities</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../logout.php" class="nav-link">
+            <i class="nav-icon fas fa-file-alt"></i>
+              <p>Reports</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../logout.php" class="nav-link">
+            <i class="nav-icon fas fa-tools"></i>
+              <p>Settings</p>
+            </a>
+          </li>
+
           <li class="nav-item">
             <a href="../logout.php" class="nav-link">
             <i class="nav-icon fas fa-sign-out-alt"></i>
