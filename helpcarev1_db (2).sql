@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2020 at 09:49 AM
+-- Generation Time: Dec 08, 2020 at 08:02 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -20,6 +20,35 @@ SET time_zone = "+00:00";
 --
 -- Database: `helpcarev1_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking`
+--
+
+CREATE TABLE `booking` (
+  `id` int(100) NOT NULL,
+  `user_name` varchar(255) DEFAULT NULL,
+  `provider_name` varchar(255) DEFAULT NULL,
+  `service` varchar(255) DEFAULT NULL,
+  `category_name` varchar(255) DEFAULT NULL,
+  `price` varchar(10) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL,
+  `date_book` date DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `book_no` varchar(50) DEFAULT NULL,
+  `modeofpayment` varchar(255) DEFAULT NULL,
+  `special_instructions` varchar(500) DEFAULT NULL,
+  `date_added` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`id`, `user_name`, `provider_name`, `service`, `category_name`, `price`, `status`, `date_book`, `address`, `book_no`, `modeofpayment`, `special_instructions`, `date_added`) VALUES
+(1, 'Admin', 'Test', 'Carpentry', 'testcat', '2', 'Approved', '2020-12-09', 'Test Address', '2020-12-09', 'cash', NULL, '2020-12-09');
 
 -- --------------------------------------------------------
 
@@ -101,6 +130,7 @@ CREATE TABLE `users` (
   `contact_info` varchar(100) NOT NULL,
   `photo` varchar(200) NOT NULL,
   `status` int(1) NOT NULL,
+  `reg_status` varchar(50) DEFAULT NULL,
   `activate_code` varchar(15) NOT NULL,
   `reset_code` varchar(15) NOT NULL,
   `created_on` date NOT NULL
@@ -110,13 +140,19 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `type`, `firstname`, `lastname`, `address`, `contact_info`, `photo`, `status`, `activate_code`, `reset_code`, `created_on`) VALUES
-(1, 'test@provider.com', '$2y$10$8wY63GX/y9Bq780GBMpxCesV9n1H6WyCqcA2hNy2uhC59hEnOpNaS', 1, 'Pro', 'vider', '', '', 'facebook-profile-image.jpeg', 1, '', '', '2020-12-01'),
-(11, 'test@gmail.com', '$2y$10$dvV7onY2bPSb9GBENwR57OixbBy3veerLtRt/FqnpoeyzV1h8x48K', 0, 'User', 'tests', 'tests', 'test', '', 1, '', '', '2020-12-01');
+INSERT INTO `users` (`id`, `email`, `password`, `type`, `firstname`, `lastname`, `address`, `contact_info`, `photo`, `status`, `reg_status`, `activate_code`, `reset_code`, `created_on`) VALUES
+(1, 'test@provider.com', '$2y$10$8wY63GX/y9Bq780GBMpxCesV9n1H6WyCqcA2hNy2uhC59hEnOpNaS', 1, 'Pro', 'vider', '', '', 'facebook-profile-image.jpeg', 1, NULL, '', '', '2020-12-01'),
+(11, 'test@gmail.com', '$2y$10$dvV7onY2bPSb9GBENwR57OixbBy3veerLtRt/FqnpoeyzV1h8x48K', 0, 'User', 'tests', 'tests', 'test', '', 1, NULL, '', '', '2020-12-01');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `booking`
+--
+ALTER TABLE `booking`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `category`
@@ -145,6 +181,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `booking`
+--
+ALTER TABLE `booking`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `category`
