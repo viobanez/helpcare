@@ -38,9 +38,10 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="#" class="h1"><i class="fas fa-heartbeat" style="color: #3d9970;
+      <!-- <a href="#" class="h1"><i class="fas fa-heartbeat" style="color: #3d9970;
     "></i><b style="color: #3d9970;
-    "> Help</b>care</a> CPanel
+    "> Help</b>care</a> CPanel -->
+    <img src="./images/logo_b.png" alt="Helpcare Logo" style="width: 230px;" >
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>

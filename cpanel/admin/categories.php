@@ -44,11 +44,29 @@
         <div class="row mb-2">
           <div class="col-sm-12">
             <h1 class="m-0">Category Page</h1>
-          </div><!-- /.col -->
+          </div><!-- /.col --><br><br>
           <div class="col-sm-6">
           <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
           </div>
         </div><!-- /.row -->
+        <?php
+          if(isset($_SESSION['error'])){
+            echo "
+              <div class='callout callout-danger text-center'>
+                <p>".$_SESSION['error']."</p> 
+              </div>
+            ";
+            unset($_SESSION['error']);
+          }
+          if(isset($_SESSION['success'])){
+            echo "
+              <div class='callout callout-success text-center'>
+                <p>".$_SESSION['success']."</p> 
+              </div>
+            ";
+            unset($_SESSION['success']);
+          }
+        ?>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -68,7 +86,7 @@
             <table id="example1" class="table table-bordered">
                 <thead>
                   <th>Category Name</th>
-                  <th>Tools</th>
+                  <th>Actions</th>
                 </thead>
                 <tbody>
                   <?php

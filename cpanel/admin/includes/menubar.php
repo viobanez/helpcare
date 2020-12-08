@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary ">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img src="../images/logo.png" alt="AdminLTE Logo" style="width: 230px;" >
+      <img src="../images/logo.png" alt="Helpcare Logo" style="width: 230px;" >
        <span class="brand-text font-weight-light"></span>
     </a>
 
@@ -34,7 +34,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Users
+                User
                 <i class="fas fa-angle-left right"></i>
                 <!-- <span class="badge badge-info right">6</span> -->
               </p>
@@ -60,7 +60,7 @@
             <a href="#" class="nav-link">
             <i class="nav-icon fas fa-pager"></i>
               <p>
-                Services
+                Service
                 <i class="fas fa-angle-left right"></i>
                 <!-- <span class="badge badge-info right">6</span> -->
               </p>
@@ -73,7 +73,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="sub-categories.php" class="nav-link">
                 <i class=" nav-icon">-</i>
                   <p>Sub Category </p>
                 </a>
@@ -84,7 +84,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Transactions
+                Transaction
                 <i class="fas fa-angle-left right"></i>
                 <!-- <span class="badge badge-info right">6</span> -->
               </p>

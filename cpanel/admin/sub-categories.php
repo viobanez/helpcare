@@ -32,8 +32,9 @@
   </nav>
   <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
-  <?php include 'includes/menubar.php'; ?>
+ 
+   <!-- Main Sidebar Container -->
+   <?php include 'includes/menubar.php'; ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -42,10 +43,10 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1 class="m-0">User Page</h1>
+            <h1 class="m-0">Sub Category Page</h1>
           </div><!-- /.col --><br><br>
           <div class="col-sm-6">
-          <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
+          <a href="#sc_add" data-toggle="modal" id="addcategory" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
           </div>
         </div><!-- /.row -->
         <?php
@@ -82,13 +83,10 @@
               <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
             </div> -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered">
+            <table id="example1" class="table table-bordered">
                 <thead>
-                  <th>Photo</th>
-                  <th>Email</th>
-                  <th>Name</th>
-                  <th>Status</th>
-                  <th>Date Added</th>
+                  <th>Sub-Category Name</th>
+                  <th>Category Name</th>
                   <th>Actions</th>
                 </thead>
                 <tbody>
@@ -96,29 +94,16 @@
                     $conn = $pdo->open();
 
                     try{
-                      $stmt = $conn->prepare("SELECT * FROM users WHERE type=:type");
-                      $stmt->execute(['type'=>0]);
+                      $stmt = $conn->prepare("SELECT * FROM sub_category");
+                      $stmt->execute();
                       foreach($stmt as $row){
-                        $image = (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg';
-                        $status = ($row['status']) ? '<span class="label label-success">active</span>' : '<span class="label label-danger">not verified</span>';
-                        $active = (!$row['status']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i></a></span>' : '';
                         echo "
                           <tr>
+                            <td>".$row['subcat_name']."</td>
+                            <td>".$row['category']."</td>
                             <td>
-                              <img src='".$image."' height='30px' width='30px'>
-                              <span class='pull-right'><a href='#edit_photo' class='photo' data-toggle='modal' data-id='".$row['id']."'><i class='fa fa-edit'></i></a></span>
-                            </td>
-                            <td>".$row['email']."</td>
-                            <td>".$row['firstname'].' '.$row['lastname']."</td>
-                            <td>
-                              ".$status."
-                              ".$active."
-                            </td>
-                            <td>".date('M d, Y', strtotime($row['created_on']))."</td>
-                            <td>
-                              <a href='#' class='btn btn-info btn-sm btn-flat'><i class='fa fa-search'></i> Book</a>
-                              <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
-                              <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
+                              <button class='btn btn-success btn-sm subcat_edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
+                              <button class='btn btn-danger btn-sm subcat_delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
                             </td>
                           </tr>
                         ";
@@ -161,57 +146,61 @@
   </footer>
 </div>
 
-<?php include 'includes/users_modal.php'; ?>
+<?php include 'includes/subcategory_modal.php'; ?>
 
-<!-- ./wrapper -->
 <?php include 'includes/scripts.php'; ?>
-<!-- REQUIRED SCRIPTS -->
 <script>
 $(function(){
 
-  $(document).on('click', '.edit', function(e){
+  $(document).on('click', '.subcat_edit', function(e){
     e.preventDefault();
-    $('#edit').modal('show');
+    $('#sc_edit').modal('show');
     var id = $(this).data('id');
     getRow(id);
   });
 
-  $(document).on('click', '.delete', function(e){
+  $(document).on('click', '.subcat_delete', function(e){
     e.preventDefault();
-    $('#delete').modal('show');
+    $('#sc_delete').modal('show');
     var id = $(this).data('id');
     getRow(id);
   });
 
-  $(document).on('click', '.photo', function(e){
+  $('#addcategory').click(function(e){
     e.preventDefault();
     var id = $(this).data('id');
-    getRow(id);
+    getCategory(id);
   });
 
-  $(document).on('click', '.status', function(e){
-    e.preventDefault();
-    var id = $(this).data('id');
-    getRow(id);
+  $("#sc_add").on("hidden.bs.modal", function () {
+      $('.append_items').remove();
   });
 
 });
 
+function getCategory(id){
+  $.ajax({
+    type: 'POST',
+    url: 'category_all.php',
+    dataType: 'json',
+    success: function(response){
+      $('#maincategory').append(response);
+      $('.userid').val(id);
+    }
+  });
+}
+
 function getRow(id){
   $.ajax({
     type: 'POST',
-    url: 'users_row.php',
+    url: 'subcategory_row.php',
     data: {id:id},
     dataType: 'json',
     success: function(response){
-      $('.userid').val(response.id);
-      $('#edit_email').val(response.email);
-      $('#edit_password').val(response.password);
-      $('#edit_firstname').val(response.firstname);
-      $('#edit_lastname').val(response.lastname);
-      $('#edit_address').val(response.address);
-      $('#edit_contact').val(response.contact_info);
-      $('.fullname').html(response.firstname+' '+response.lastname);
+      $('.subcatid').val(response.id);
+      $('#cat_name').val(response.category);
+      $('#subcat_name').val(response.subcat_name);
+      $('#sc_name').val(response.subcat_name);
     }
   });
 }
