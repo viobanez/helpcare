@@ -42,7 +42,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1 class="m-0">Provider Page</h1>
+            <h1 class="m-0">Booking Page</h1>
           </div><!-- /.col --><br><br>
           <div class="col-sm-6">
           <a href="#addnewp" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
@@ -161,7 +161,7 @@
   </footer>
 </div>
 
-<?php include 'includes/users_modal.php'; ?>
+<?php include 'includes/booking_modal.php'; ?>
 
 <!-- ./wrapper -->
 <?php include 'includes/scripts.php'; ?>

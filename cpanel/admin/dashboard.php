@@ -148,8 +148,8 @@
           <div class="small-box bg-aqua">
             <div class="inner">
               <?php
-                $stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM users WHERE type=:type and reg_status=:reg_status  ");
-                $stmt->execute(['type'=>2 , 'reg_status'=> 'Waiting']);
+                $stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM users WHERE type=:type ");
+                $stmt->execute(['type'=>2 ]);
                 $prow =  $stmt->fetch();
 
                 echo "<h4>".$prow['numrows']. "</h4>";
