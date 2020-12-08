@@ -41,13 +41,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="categories.php" class="nav-link">
+                <a href="user.php" class="nav-link">
                 <i class=" nav-icon">-</i>
                   <p>Clients</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="categories.php" class="nav-link">
+                <a href="" class="nav-link">
                 <i class=" nav-icon">-</i>
                   <p>Service Providers</p>
                 </a>
@@ -73,7 +73,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="categories.php" class="nav-link">
+                <a href="" class="nav-link">
                 <i class=" nav-icon">-</i>
                   <p>Sub Category </p>
                 </a>
@@ -91,13 +91,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="categories.php" class="nav-link">
+                <a href="" class="nav-link">
                 <i class=" nav-icon">-</i>
                   <p>Appointment</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="categories.php" class="nav-link">
+                <a href="" class="nav-link">
                 <i class=" nav-icon">-</i>
                   <p>Bookings</p>
                 </a>
@@ -116,13 +116,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="categories.php" class="nav-link">
+                <a href="" class="nav-link">
                 <i class=" nav-icon">-</i>
                   <p>Reviews</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="categories.php" class="nav-link">
+                <a href="" class="nav-link">
                 <i class=" nav-icon">-</i>
                   <p>Ratings</p>
                 </a>
@@ -131,25 +131,25 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="../logout.php" class="nav-link">
+            <a href="" class="nav-link">
             <i class="nav-icon fas fa-money-check-alt"></i>
               <p>Pricing</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="../logout.php" class="nav-link">
+            <a href="" class="nav-link">
             <i class="nav-icon fas fa-cogs"></i>
               <p>Utilities</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="../logout.php" class="nav-link">
+            <a href="" class="nav-link">
             <i class="nav-icon fas fa-file-alt"></i>
               <p>Reports</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="../logout.php" class="nav-link">
+            <a href="" class="nav-link">
             <i class="nav-icon fas fa-tools"></i>
               <p>Settings</p>
             </a>
