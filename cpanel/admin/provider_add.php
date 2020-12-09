@@ -9,6 +9,8 @@
 		$address = $_POST['address'];
 		$contact = $_POST['contact'];
 		$type = $_POST['type'];
+		$service_cat = $_POST['service_cat'];
+		$rate = $_POST['rate'];
 
 		$conn = $pdo->open();
 
@@ -27,8 +29,8 @@
 				move_uploaded_file($_FILES['photo']['tmp_name'], '../images/'.$filename);	
 			}
 			try{
-				$stmt = $conn->prepare("INSERT INTO users (email, password, firstname, lastname, address, contact_info, photo, status, type, created_on) VALUES (:email, :password, :firstname, :lastname, :address, :contact, :photo, :status, :type, :created_on)");
-				$stmt->execute(['email'=>$email, 'password'=>$password, 'firstname'=>$firstname, 'lastname'=>$lastname, 'address'=>$address, 'contact'=>$contact, 'photo'=>$filename, 'status'=>0, 'type'=>$type, 'created_on'=>$now]);
+				$stmt = $conn->prepare("INSERT INTO users (email, password, firstname, lastname, address, contact_info, photo, status, type, service_cat, rate, created_on) VALUES (:email, :password, :firstname, :lastname, :address, :contact, :photo, :status, :type, :service_cat, :rate, :created_on)");
+				$stmt->execute(['email'=>$email, 'password'=>$password, 'firstname'=>$firstname, 'lastname'=>$lastname, 'address'=>$address, 'contact'=>$contact, 'photo'=>$filename, 'status'=>0, 'type'=>$type, 'service_cat'=>$service_cat, 'rate'=>$rate, 'created_on'=>$now]);
 				$_SESSION['success'] = 'User added successfully';
 
 			}

@@ -70,66 +70,115 @@
 </div>
 <!-- Add Provider -->
 <div class="modal fade" id="addnewp">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-            <h4 class="modal-title"><b>Add New Provider</b></h4>
+            <h4 class="modal-title"><b>Add New Booking</b></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-             
             </div>
             <div class="modal-body">
-              <form class="form-horizontal" method="POST" action="provider_add.php" enctype="multipart/form-data">
-                <input type="hidden" class="form-control" name="type" value="2" required>
-                <div class="form-group">
-                    <label for="email" class="col-sm-3 control-label">Email</label>
+            <form role="form">
 
-                    <div class="col-sm-9">
-                      <input type="email" class="form-control" id="email" name="email" required>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      
+                      <div class="form-group">
+                        <label>Booking No</label>
+                        <input type="text" class="form-control" placeholder="Enter ...">
+                      </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="col-sm-3 control-label">Password</label>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" placeholder="Enter ..." >
+                      </div>
+                    </div>
+                  </div>
 
-                    <div class="col-sm-9">
-                      <input type="password" class="form-control" id="password" name="password" required>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      
+                      <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" class="form-control" placeholder="Enter ..." >
+                      </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="firstname" class="col-sm-3 control-label">Firstname</label>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Status</label>
+                        <input type="text" class="form-control" placeholder="Enter ..." >
+                      </div>
+                    </div>
+                  </div>
 
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" id="firstname" name="firstname" required>
+                  <div class="row">
+                    <div class="col-sm-6">
+                     
+                      <div class="form-group">
+                        <label>Service</label>
+                        <input type="text" class="form-control" placeholder="Enter ..." >
+                      </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="lastname" class="col-sm-3 control-label">Lastname</label>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Rate</label>
+                        <input type="text" class="form-control" placeholder="Enter ..." >
+                      </div>
+                    </div>
+                  </div>
 
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" id="lastname" name="lastname" required>
+                  <div class="row">
+                    <div class="col-sm-6">
+                     
+                      <div class="form-group">
+                        <label>Date</label>
+                        <input type="text" class="form-control" placeholder="Enter ..." >
+                      </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="address" class="col-sm-3 control-label">Address</label>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Time</label>
+                        <input type="text" class="form-control" placeholder="Enter ..." >
+                      </div>
+                    </div>
+                  </div>
 
-                    <div class="col-sm-9">
-                      <textarea class="form-control" id="address" name="address"></textarea>
+                  <div class="row">
+                    <div class="col-sm-12">
+                     
+                      <div class="form-group">
+                        <label>Address</label>
+                        <!-- <input type="text" class="form-control" placeholder="Enter ..." disabled=""> -->
+                        <textarea class="form-control"></textarea>
+                      </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="contact" class="col-sm-3 control-label">Contact Info</label>
+                  </div>
 
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" id="contact" name="contact">
+                  <div class="row">
+                    <div class="col-sm-12">
+                    
+                      <div class="form-group">
+                        <label>Extra Notes</label>
+                        <!-- <input type="text" class="form-control" placeholder="Enter ..." disabled=""> -->
+                        <textarea class="form-control"></textarea>
+                      </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="photo" class="col-sm-3 control-label">Photo</label>
+                  </div>
 
-                    <div class="col-sm-9">
-                      <input type="file" id="photo" name="photo">
+                  <div class="row">
+                    <div class="col-sm-12">
+                     
+                      <div class="form-group">
+                        <label>Provider Name</label>
+                        <input type="text" class="form-control" placeholder="Enter ..." >
+                      </div>
                     </div>
-                </div>
+                  </div>
+
+
+                  
+              
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>

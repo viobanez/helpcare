@@ -90,12 +90,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="" class="nav-link">
                 <i class=" nav-icon">-</i>
                   <p>Appointment</p>
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a href="booking.php" class="nav-link">
                 <i class=" nav-icon">-</i>

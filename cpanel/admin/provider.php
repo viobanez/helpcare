@@ -45,7 +45,8 @@
             <h1 class="m-0">Provider Page</h1>
           </div><!-- /.col --><br><br>
           <div class="col-sm-6">
-          <a href="#addnewp" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
+          <a href="#addnewp" data-toggle="modal" id="loadcategory" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
+
           </div>
         </div><!-- /.row -->
         <?php
@@ -116,8 +117,8 @@
                             </td>
                             <td>".date('M d, Y', strtotime($row['created_on']))."</td>
                             <td>
-                             
-                              <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
+                            <a href='#service' data-toggle='modal' class='btn btn-info btn-sm btn-flat desc' data-id='".$row['id']."'><i class='fa fa-search'></i> View Service</a>
+                              <button class='btn btn-success btn-sm edit editservice_cat btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
                               <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
                             </td>
                           </tr>
@@ -195,7 +196,47 @@ $(function(){
     getRow(id);
   });
 
+  $(document).on('click', '.desc', function(e){
+    e.preventDefault();
+    var id = $(this).data('id');
+    getRow(id);
+  });
+
+
+  $('#loadcategory').click(function(e){
+    e.preventDefault();
+    var id = $(this).data('id');
+    getCategory(id);
+  });
+
+  $("#addnewp").on("hidden.bs.modal", function () {
+      $('.append_items').remove();
+  });
+
+  
+  $('#editservice_cat').click(function(e){
+    e.preventDefault();
+    var id = $(this).data('id');
+    getCategory(id);
+  });
+
+  $("#service").on("hidden.bs.modal", function () {
+      $('.append_items').remove();
+  });
+
 });
+
+function getCategory(id){
+  $.ajax({
+    type: 'POST',
+    url: 'category_all.php',
+    dataType: 'json',
+    success: function(response){
+      $('#service_category').append(response);
+      $('.userid').val(id);
+    }
+  });
+}
 
 function getRow(id){
   $.ajax({
@@ -205,6 +246,10 @@ function getRow(id){
     dataType: 'json',
     success: function(response){
       $('.userid').val(response.id);
+      $('#desc').html(response.service_cat+' - '+response.rate);
+      $('#service_category').val(response.service_cat);
+      $('#rate').val(response.rate);
+      $('.name').html(response.prodname);
       $('#edit_email').val(response.email);
       $('#edit_password').val(response.password);
       $('#edit_firstname').val(response.firstname);

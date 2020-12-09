@@ -1,3 +1,23 @@
+<!-- service -->
+<div class="modal fade" id="service">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h4 class="modal-title"><b>Service Offered</b></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+            </div>
+
+            <div class="modal-body">
+                <p id="desc"></p>
+            </div>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Add -->
 <div class="modal fade" id="addnew">
     <div class="modal-dialog">
@@ -130,6 +150,25 @@
                       <input type="file" id="photo" name="photo">
                     </div>
                 </div>
+                <hr>
+                <div class="form-group">
+                    <label for="contact" class="col-sm-3 control-label">Service</label>
+                    <div class="col-sm-9">
+                      <select class="form-control select2" style="width: 100%;" name="service_cat" id="service_category" required>
+                        <option value="" selected>- Select -</option>
+
+                      </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="contact" class="col-sm-3 control-label">Charge Rate</label>
+
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="contact" name="rate">
+                    </div>
+                </div>
+
+
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
@@ -195,6 +234,24 @@
                       <input type="text" class="form-control" id="edit_contact" name="contact">
                     </div>
                 </div>
+                <hr>
+                <div class="form-group">
+                    <label for="contact" class="col-sm-3 control-label">Service</label>
+                    <div class="col-sm-9">
+                      <select class="form-control select2" style="width: 100%;" name="service_cat" id="service_categ" required>
+                        <option value="" selected>- Select -</option>
+
+                      </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="contact" class="col-sm-3 control-label">Charge Rate</label>
+
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="rate" name="rate">
+                    </div>
+                </div>
+
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
