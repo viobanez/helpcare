@@ -234,21 +234,97 @@
                       <input type="text" class="form-control" id="edit_contact" name="contact">
                     </div>
                 </div>
+              
+                
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+              <button type="submit" class="btn btn-success btn-flat" name="edit"><i class="fa fa-check-square-o"></i> Update</button>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Provider-->
+<div class="modal fade editservice_catserv" id="editservice_cats">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h4 class="modal-title"><b>Edit Provider</b></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+             
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal" method="POST" action="users_edit.php">
+                <input type="hidden" class="userid" name="id">
+                <div class="form-group">
+                    <label for="edit_email" class="col-sm-3 control-label">Email</label>
+
+                    <div class="col-sm-9">
+                      <input type="email" class="form-control" id="editmail" name="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="edit_password" class="col-sm-3 control-label">Password</label>
+
+                    <div class="col-sm-9">
+                      <input type="password" class="form-control" id="editpassword" name="password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="edit_firstname" class="col-sm-3 control-label">Firstname</label>
+
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="editfirstname" name="firstname">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="edit_lastname" class="col-sm-3 control-label">Lastname</label>
+
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="editlastname" name="lastname">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="edit_address" class="col-sm-3 control-label">Address</label>
+
+                    <div class="col-sm-9">
+                      <textarea class="form-control" id="editaddress" name="address"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="edit_contact" class="col-sm-3 control-label">Contact Info</label>
+
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="editcontact" name="contact">
+                    </div>
+                </div>
                 <hr>
+                <!-- <div class="form-group">
+                    <label for="contact" class="col-sm-5 control-label">Application Status</label>
+                    <div class="col-sm-9">
+                  
+                      <select class="form-control select2" style="width: 100%;" name="status" id="" required>
+                      
+                        <option value="1" >Active</option>
+                        <option value="0" >Inactive</option>
+                      </select>
+                    </div>
+                </div> -->
                 <div class="form-group">
                     <label for="contact" class="col-sm-3 control-label">Service</label>
                     <div class="col-sm-9">
-                      <select class="form-control select2" style="width: 100%;" name="service_cat" id="service_categ" required>
-                        <option value="" selected>- Select -</option>
-
-                      </select>
+                      <input type="text" class="form-control" id="editservicecat" name="service_cat">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="contact" class="col-sm-3 control-label">Charge Rate</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="rate" name="rate">
+                      <input type="text" class="form-control" id="editrate" name="rate">
                     </div>
                 </div>
 
@@ -320,20 +396,75 @@
 </div> 
 
 
-<!-- Activate -->
+<!-- Provider Activate -->
+<div class="modal fade" id="proactivate">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h4 class="modal-title"><b>Activating Provider...</b></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+              
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal" method="POST" action="users_proactivate.php">
+                <input type="hidden" class="userid" name="id">
+                <div class="text-center">
+                  
+                    <h2 class="bold fullname"></h2>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+              <button type="submit" class="btn btn-success btn-flat" name="proactivate"><i class="fa fa-check"></i> Activate</button>
+              </form>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<!-- Provider Deactivate -->
+<div class="modal fade" id="prodeactivate">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h4 class="modal-title"><b>Deactivating Provider...</b></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+              
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal" method="POST" action="users_prodeactivate.php">
+                <input type="hidden" class="userid" name="id">
+                <div class="text-center">
+                  
+                    <h2 class="bold fullname"></h2>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+              <button type="submit" class="btn btn-danger btn-flat" name="prodeactivate"><i class="fa fa-times"></i> Deactivate</button>
+              </form>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<!-- User activate -->
 <div class="modal fade" id="activate">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+            <h4 class="modal-title"><b>Activating...</b></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><b>Activating...</b></h4>
+              
             </div>
             <div class="modal-body">
               <form class="form-horizontal" method="POST" action="users_activate.php">
                 <input type="hidden" class="userid" name="id">
                 <div class="text-center">
-                    <p>ACTIVATE USER</p>
+                   
                     <h2 class="bold fullname"></h2>
                 </div>
             </div>
@@ -344,7 +475,34 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
+
+<!-- User deactivate -->
+<div class="modal fade" id="deactivate">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h4 class="modal-title"><b>Deactivating...</b></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+              
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal" method="POST" action="users_deactivate.php">
+                <input type="hidden" class="userid" name="id">
+                <div class="text-center">
+                   
+                    <h2 class="bold fullname"></h2>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+              <button type="submit" class="btn btn-danger btn-flat" name="deactivate"><i class="fa fa-times"></i> Deactivate</button>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
      

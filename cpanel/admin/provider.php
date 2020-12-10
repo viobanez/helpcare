@@ -88,7 +88,7 @@
                   <th>Photo</th>
                   <th>Email</th>
                   <th>Name</th>
-                  <th>Status</th>
+                  <th>Application Status</th>
                   <th>Date Added</th>
                   <th>Actions</th>
                 </thead>
@@ -101,8 +101,8 @@
                       $stmt->execute(['type'=>2]);
                       foreach($stmt as $row){
                         $image = (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg';
-                        $status = ($row['status']) ? '<span class="label label-success">active</span>' : '<span class="label label-danger">not verified</span>';
-                        $active = (!$row['status']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i></a></span>' : '';
+                        $status = ($row['status']) ? '<span class="label label-success">Active</span>' : '<span class="label label-danger">Inactive</span>';
+                        $active = (!$row['status']) ? '<span class="pull-right"><a href="#proactivate" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i><i class="fa fa-edit"></i></a></span>' : '<span class="pull-right"><a href="#prodeactivate" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i><i class="fa fa-edit"></i></a></span>';
                         echo "
                           <tr>
                             <td>
@@ -118,7 +118,7 @@
                             <td>".date('M d, Y', strtotime($row['created_on']))."</td>
                             <td>
                             <a href='#service' data-toggle='modal' class='btn btn-info btn-sm btn-flat desc' data-id='".$row['id']."'><i class='fa fa-search'></i> View Service</a>
-                              <button class='btn btn-success btn-sm edit editservice_cat btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
+                              <button class='btn btn-success btn-sm editservice_cat btn-flat' data-id='".$row['id']."' id='editnewp'><i class='fa fa-edit'></i> Edit</button>
                               <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
                             </td>
                           </tr>
@@ -177,6 +177,14 @@ $(function(){
     getRow(id);
   });
 
+  
+  $(document).on('click', '.editservice_cat', function(e){
+    e.preventDefault();
+    $('#editservice_cats').modal('show');
+    var id = $(this).data('id');
+    getRow(id);
+  });
+
   $(document).on('click', '.delete', function(e){
     e.preventDefault();
     $('#delete').modal('show');
@@ -217,11 +225,11 @@ $(function(){
   $('#editservice_cat').click(function(e){
     e.preventDefault();
     var id = $(this).data('id');
-    getCategory(id);
+    geteditCategory(id);
   });
 
-  $("#service").on("hidden.bs.modal", function () {
-      $('.append_items').remove();
+  $("#editnewp").on("hidden.bs.modal", function () {
+      $('.append_itemss').remove();
   });
 
 });
@@ -238,6 +246,20 @@ function getCategory(id){
   });
 }
 
+function geteditCategory(id){
+  $.ajax({
+    type: 'POST',
+    url: 'category_editfetch.php',
+    dataType: 'json',
+    success: function(response){
+   
+      $('#service_catee').append(response);
+      $('.userid').val(id);
+    }
+  });
+}
+
+
 function getRow(id){
   $.ajax({
     type: 'POST',
@@ -248,14 +270,19 @@ function getRow(id){
       $('.userid').val(response.id);
       $('#desc').html(response.service_cat+' - '+response.rate);
       $('#service_category').val(response.service_cat);
+     // $('#service_catee').val(response.service_cat);
       $('#rate').val(response.rate);
       $('.name').html(response.prodname);
-      $('#edit_email').val(response.email);
-      $('#edit_password').val(response.password);
-      $('#edit_firstname').val(response.firstname);
-      $('#edit_lastname').val(response.lastname);
-      $('#edit_address').val(response.address);
-      $('#edit_contact').val(response.contact_info);
+
+      $('#editmail').val(response.email);
+      $('#editpassword').val(response.password);
+      $('#editfirstname').val(response.firstname);
+      $('#editlastname').val(response.lastname);
+      $('#editaddress').val(response.address);
+      $('#editcontact').val(response.contact_info); 
+      $('#appstat').val(response.reg_status);
+      $('#editservicecat').val(response.service_cat);
+      $('#editrate').val(response.rate);
       $('.fullname').html(response.firstname+' '+response.lastname);
     }
   });
