@@ -144,22 +144,26 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="photo" class="col-sm-3 control-label">Photo</label>
+                    <label for="photo" class="col-sm-3 control-label">User Photo</label>
 
                     <div class="col-sm-9">
                       <input type="file" id="photo" name="photo">
                     </div>
                 </div>
                 <hr>
+                <label for="photo" class="col-sm-3 control-label">Service Photo</label>
+                <div class="col-sm-9">
+                  <input type="file" id="photo" name="photo">
+                </div>
                 <div class="form-group">
                     <label for="contact" class="col-sm-3 control-label">Service</label>
                     <div class="col-sm-9">
                       <select class="form-control select2" style="width: 100%;" name="service_cat" id="service_category" required>
                         <option value="" selected>- Select -</option>
-
                       </select>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label for="contact" class="col-sm-3 control-label">Charge Rate</label>
 
@@ -394,6 +398,36 @@
         </div>
     </div>
 </div> 
+
+<!-- Update Provider Photo -->
+<div class="modal fade" id="edit_providerphoto">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h4 class="modal-title"><b><span class="fullname"></span></b></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+             
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal" method="POST" action="provider_photo.php" enctype="multipart/form-data">
+                <input type="hidden" class="userid" name="id">
+                <div class="form-group">
+                    <label for="photo" class="col-sm-3 control-label">Photo</label>
+
+                    <div class="col-sm-9">
+                      <input type="file" id="photo" name="photo" required>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+              <button type="submit" class="btn btn-success btn-flat" name="uploadprovider"><i class="fa fa-check-square-o"></i> Update Provider</button>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <!-- Provider Activate -->

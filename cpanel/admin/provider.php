@@ -107,7 +107,7 @@
                           <tr>
                             <td>
                               <img src='".$image."' height='30px' width='30px'>
-                              <span class='pull-right'><a href='#edit_photo' class='photo' data-toggle='modal' data-id='".$row['id']."'><i class='fa fa-edit'></i></a></span>
+                              <span class='pull-right'><a href='#edit_providerphoto' class='photoprovider' data-toggle='modal' data-id='".$row['id']."'><i class='fa fa-edit'></i></a></span>
                             </td>
                             <td>".$row['email']."</td>
                             <td>".$row['firstname'].' '.$row['lastname']."</td>
@@ -192,7 +192,7 @@ $(function(){
     getRow(id);
   });
 
-  $(document).on('click', '.photo', function(e){
+  $(document).on('click', '.photoprovider', function(e){
     e.preventDefault();
     var id = $(this).data('id');
     getRow(id);

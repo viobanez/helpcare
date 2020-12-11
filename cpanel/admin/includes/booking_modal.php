@@ -68,12 +68,34 @@
         </div>
     </div>
 </div>
-<!-- Add Provider -->
+<!-- Add Booking -->
 <div class="modal fade" id="addnewp">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-            <h4 class="modal-title"><b>Add New Booking</b></h4>
+            <h4 class="modal-title">
+            <b>New Booking |  
+                <span style="color: darkgreen;">
+                <?php
+                  $conn = $pdo->open();
+
+                  try{
+                    $stmt = $conn->prepare("SELECT * FROM booking");
+                    $stmt->execute();
+                    foreach($stmt as $row){
+
+                      echo "Booking No.".$row['id']."";
+
+                    }
+                  }
+                  catch(PDOException $e){
+                    echo $e->getMessage();
+                  }
+
+                  $pdo->close();
+                ?>
+                </span>
+              </b></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
             </div>
@@ -85,7 +107,7 @@
                       
                       <div class="form-group">
                         <label>Booking No</label>
-                        <input type="text" class="form-control" placeholder="Enter ...">
+                        <input type="text" class="form-control" placeholder="Enter ..." >
                       </div>
                     </div>
                     <div class="col-sm-6">
@@ -133,13 +155,13 @@
                      
                       <div class="form-group">
                         <label>Date</label>
-                        <input type="text" class="form-control" placeholder="Enter ..." >
+                        <input type="date" class="form-control" placeholder="Enter ..." >
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>Time</label>
-                        <input type="text" class="form-control" placeholder="Enter ..." >
+                        <input type="time" class="form-control" placeholder="Enter ..." >
                       </div>
                     </div>
                   </div>
@@ -171,7 +193,28 @@
                      
                       <div class="form-group">
                         <label>Provider Name</label>
-                        <input type="text" class="form-control" placeholder="Enter ..." >
+                        <select class="form-control">
+                        <?php
+                            $conn = $pdo->open();
+
+                            try{
+                              $stmt = $conn->prepare("SELECT * FROM users WHERE type=:type");
+                              $stmt->execute(['type'=>2]);
+                              foreach($stmt as $row){
+                                echo "
+                                    <option>".$row['firstname']." ".$row['lasttname']."</option>
+                                ";
+                              }
+                            }
+                            catch(PDOException $e){
+                              echo $e->getMessage();
+                            }
+
+                            $pdo->close();
+                          ?>
+                      
+                        </select>
+                       
                       </div>
                     </div>
                   </div>
