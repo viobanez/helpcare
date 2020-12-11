@@ -16,6 +16,9 @@
   <link rel="stylesheet" href="./../dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition login-page">
+<div class="container-fluid text-center">
+    <img src="./images/logo_b.png" alt="Helpcare Logo" style="margin-bottom:50px;">
+</div>
 <div class="login-box">
 <?php
       if(isset($_SESSION['error'])){
@@ -37,14 +40,9 @@
     ?>
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <!-- <a href="#" class="h1"><i class="fas fa-heartbeat" style="color: #3d9970;
-    "></i><b style="color: #3d9970;
-    "> Help</b>care</a> CPanel -->
-    <img src="./images/logo_b.png" alt="Helpcare Logo" style="width: 230px;" >
-    </div>
+
     <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg" style="font-weight:bold;">Login as Administrator</p>
 
       <form action="verify.php" method="post">
         <div class="input-group mb-3">
@@ -81,7 +79,7 @@
       </form><br>
       <div class="social-auth-links text-center mt-2 mb-3">
         <a href="../index.php" class="btn btn-block btn-default">
-          Go to public page
+          Go to client page
         </a>
         
       </div>
