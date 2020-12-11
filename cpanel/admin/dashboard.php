@@ -80,17 +80,29 @@
                 $stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM booking WHERE status=:status ");
                 $stmt->execute(['status'=> 'Pending']);
                 $prow =  $stmt->fetch();
+                echo "<h4>".$prow['numrows']."</h4>";
+              ?> 
+              <p>Pending</p>
+            </div>
+            <div class="icon">
+            <i class="far fa-clone"></i>
+            </div>
+            &nbsp;
+          </div>
+        </div>
 
-                echo "<h4>".$prow['numrows'];
-              ?> /
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
                <?php
                 $stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM booking");
                 $stmt->execute(['status'=> 'Approved']);
                 $prow =  $stmt->fetch();
 
-                echo $prow['numrows']."</h4>";
+                echo "<h4>".$prow['numrows']."</h4>";
               ?>
-              <p>Pending/Approved</p>
+              <p>Approved</p>
             </div>
             <div class="icon">
             <i class="far fa-clone"></i>
@@ -148,13 +160,33 @@
           <div class="small-box bg-aqua">
             <div class="inner">
               <?php
-                $stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM users WHERE type=:type ");
-                $stmt->execute(['type'=>2 ]);
+                $stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM users WHERE type=:type and status=:status");
+                $stmt->execute(['type'=>2,'status'=>1 ]);
                 $prow =  $stmt->fetch();
 
                 echo "<h4>".$prow['numrows']. "</h4>";
               ?>
               <p>Provider Applicants</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-user"></i>
+            </div>
+            &nbsp;
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <?php
+                $stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM users WHERE type=:type and status=:status");
+                $stmt->execute(['type'=>2,'status'=>0]);
+                $prow =  $stmt->fetch();
+
+                echo "<h4>".$prow['numrows']. "</h4>";
+              ?>
+              <p>Pending Applicants</p>
             </div>
             <div class="icon">
               <i class="fa fa-user"></i>
@@ -182,6 +214,59 @@
       <h4>Latest Booking</h4>
       <div class="row">
       <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+              <div class="box">
+            <!-- <div class="box-header with-border">
+              <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
+            </div> -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered">
+                <thead>
+                  <th>Book No</th>
+                  <th>Email</th>
+                  <th>Name</th>
+                  <th>Status</th>
+                  <th>Date Added</th>
+                </thead>
+                <tbody>
+                  <?php
+                    $conn = $pdo->open();
+                    try{
+                      $stmt = $conn->prepare("SELECT * FROM booking ");
+                      $stmt->execute();
+                      foreach($stmt as $row){
+                        $image = (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg';
+                        $status = ($row['status']) ? '<span class="label label-success">active</span>' : '<span class="label label-danger">not verified</span>';
+                        $active = (!$row['status']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i></a></span>' : '';
+                        echo "
+                          <tr>
+                            <td>".$row['book_no']."</td>
+                            <td>".$row['service']."</td>
+                            <td>".$row['provider_name']."</td>
+                            <td>
+                              ".$status."
+                              ".$active."
+                            </td>
+                            <td>".date('M d, Y', strtotime($row['date_added']))."</td>
+                          </tr>
+                        ";
+                      }
+                    }
+                    catch(PDOException $e){
+                      echo $e->getMessage();
+                    }
+                    $pdo->close();
+                  ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+      </div>
+      </div>
+      <h4>Recently Account Created</h4>
+      <div class="row">
+        <div class="col-lg-12">
             <div class="card">
               <div class="card-body">
               <div class="box">
@@ -232,6 +317,7 @@
               </table>
             </div>
           </div>
+      </div>
       </div>
       </section>
       <!-- right col -->
