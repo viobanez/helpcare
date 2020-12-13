@@ -1,3 +1,25 @@
+<!-- service -->
+<div class="modal fade" id="instruct">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h4 class="modal-title"><b>Booking Details</b></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+            </div>
+
+            <div class="modal-body">
+                <b>Email: </b><p id="email"></p>
+                <b>Address: </b><p id="address"></p>
+                <b> Instruction: </b><p id="instructions"></p>
+            </div>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Add -->
 <div class="modal fade" id="addnew">
     <div class="modal-dialog">
@@ -74,46 +96,36 @@
         <div class="modal-content">
             <div class="modal-header">
             <h4 class="modal-title">
-            <b>New Booking |  
-                <span style="color: darkgreen;">
-                <?php
-                  $conn = $pdo->open();
-
-                  try{
-                    $stmt = $conn->prepare("SELECT * FROM booking");
-                    $stmt->execute();
-                    foreach($stmt as $row){
-
-                      echo "Booking No.".$row['id']."";
-
-                    }
-                  }
-                  catch(PDOException $e){
-                    echo $e->getMessage();
-                  }
-
-                  $pdo->close();
-                ?>
-                </span>
-              </b></h4>
+            <b>New Booking </b></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-            <form role="form">
-
+            <form role="form" method="POST" action="booking_add.php"  enctype="multipart/form-data">
                   <div class="row">
                     <div class="col-sm-6">
-                      
                       <div class="form-group">
                         <label>Booking No</label>
-                        <input type="text" class="form-control" placeholder="Enter ..." >
+                        <?php
+                            $conn = $pdo->open();
+                            try{
+                              $stmt = $conn->prepare("SELECT * FROM booking ORDER BY id DESC LIMIT 1");
+                              $stmt->execute();
+                              foreach($stmt as $row){
+                                echo " <input type='text' class='form-control' name='book_no' value='HC2020".$row['id']."12'>";
+                              }
+                            }
+                            catch(PDOException $e){
+                              echo $e->getMessage();
+                            }
+                            $pdo->close();
+                          ?>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" placeholder="Enter ..." >
+                        <label>Customer Name</label>
+                        <input type="text" class="form-control" name="user_name">
                       </div>
                     </div>
                   </div>
@@ -123,78 +135,75 @@
                       
                       <div class="form-group">
                         <label>Email</label>
-                        <input type="text" class="form-control" placeholder="Enter ..." >
+                        <input type="text" class="form-control" name="email">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Status</label>
-                        <input type="text" class="form-control" placeholder="Enter ..." >
+                        <label>Service and Rate</label>
+                        <!-- <input type="text" class="form-control" > -->
+                        <select class="form-control" name="service_and_rate">
+                        <?php
+                            $conn = $pdo->open();
+                            try{
+                              $stmt = $conn->prepare("SELECT * FROM users WHERE type=:type");
+                              $stmt->execute(['type'=>2]);
+                              foreach($stmt as $row){
+                                echo "
+                                    <option value='".$row['service_cat']." - ".$row['rate']."'>".$row['service_cat']." - ".$row['rate']."</option>
+                                ";
+                              }
+                            }
+                            catch(PDOException $e){
+                              echo $e->getMessage();
+                            }
+                            $pdo->close();
+                          ?>
+                        </select>
                       </div>
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="col-sm-6">
-                     
-                      <div class="form-group">
-                        <label>Service</label>
-                        <input type="text" class="form-control" placeholder="Enter ..." >
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Rate</label>
-                        <input type="text" class="form-control" placeholder="Enter ..." >
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-sm-6">
-                     
                       <div class="form-group">
                         <label>Date</label>
-                        <input type="date" class="form-control" placeholder="Enter ..." >
+                        <input type="date" class="form-control" name="date_book">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>Time</label>
-                        <input type="time" class="form-control" placeholder="Enter ..." >
+                        <input type="time" class="form-control" name="time">
                       </div>
                     </div>
                   </div>
-
                   <div class="row">
                     <div class="col-sm-12">
-                     
                       <div class="form-group">
                         <label>Address</label>
                         <!-- <input type="text" class="form-control" placeholder="Enter ..." disabled=""> -->
-                        <textarea class="form-control"></textarea>
+                        <textarea class="form-control" name="address"></textarea>
                       </div>
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="col-sm-12">
-                    
                       <div class="form-group">
                         <label>Extra Notes</label>
                         <!-- <input type="text" class="form-control" placeholder="Enter ..." disabled=""> -->
-                        <textarea class="form-control"></textarea>
+                        <textarea class="form-control" name="special_instructions"></textarea>
                       </div>
                     </div>
                   </div>
-
-                  <div class="row">
+                  <!-- <div class="row">
                     <div class="col-sm-12">
                      
                       <div class="form-group">
                         <label>Provider Name</label>
                         <select class="form-control">
-                        <?php
+                        <//?php
                             $conn = $pdo->open();
 
                             try{
@@ -217,15 +226,11 @@
                        
                       </div>
                     </div>
-                  </div>
-
-
-                  
-              
+                  </div> -->
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-              <button type="submit" class="btn btn-primary btn-flat" name="addprovider"><i class="fa fa-save"></i> Save</button>
+              <button type="submit" class="btn btn-primary btn-flat" name="addbooking"><i class="fa fa-save"></i> Save</button>
               </form>
             </div>
         </div>
@@ -240,49 +245,42 @@
             <h4 class="modal-title"><b>Edit User</b></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-             
             </div>
             <div class="modal-body">
               <form class="form-horizontal" method="POST" action="users_edit.php">
                 <input type="hidden" class="userid" name="id">
                 <div class="form-group">
                     <label for="edit_email" class="col-sm-3 control-label">Email</label>
-
                     <div class="col-sm-9">
                       <input type="email" class="form-control" id="edit_email" name="email">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="edit_password" class="col-sm-3 control-label">Password</label>
-
                     <div class="col-sm-9">
                       <input type="password" class="form-control" id="edit_password" name="password">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="edit_firstname" class="col-sm-3 control-label">Firstname</label>
-
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="edit_firstname" name="firstname">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="edit_lastname" class="col-sm-3 control-label">Lastname</label>
-
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="edit_lastname" name="lastname">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="edit_address" class="col-sm-3 control-label">Address</label>
-
                     <div class="col-sm-9">
                       <textarea class="form-control" id="edit_address" name="address"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="edit_contact" class="col-sm-3 control-label">Contact Info</label>
-
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="edit_contact" name="contact">
                     </div>

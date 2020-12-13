@@ -130,12 +130,12 @@
              
             </ul>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="" class="nav-link">
             <i class="nav-icon fas fa-money-check-alt"></i>
               <p>Pricing</p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a href="" class="nav-link">
             <i class="nav-icon fas fa-cogs"></i>
