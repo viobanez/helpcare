@@ -233,7 +233,7 @@
                   <?php
                     $conn = $pdo->open();
                     try{
-                      $stmt = $conn->prepare("SELECT * FROM booking ");
+                      $stmt = $conn->prepare("SELECT * FROM booking ORDER BY id DESC ");
                       $stmt->execute();
                       foreach($stmt as $row){
                         $image = (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg';
@@ -286,7 +286,7 @@
                   <?php
                     $conn = $pdo->open();
                     try{
-                      $stmt = $conn->prepare("SELECT * FROM users WHERE type=:type");
+                      $stmt = $conn->prepare("SELECT * FROM users WHERE type=:type ORDER BY id DESC");
                       $stmt->execute(['type'=>0]);
                       foreach($stmt as $row){
                         $image = (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg';
