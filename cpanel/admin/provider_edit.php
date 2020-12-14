@@ -14,6 +14,13 @@
 		$service_cat = $_POST['service_cat'];
 		$rate = $_POST['rate'];
 
+		if($password == $row['password']){
+			$password = $row['password'];
+		}
+		else{
+			$password = password_hash($password, PASSWORD_DEFAULT);
+		}
+
 		try{
 			$stmt = $conn->prepare("UPDATE users SET email=:email, password=:password, firstname=:firstname, lastname=:lastname, address=:address, contact_info=:contact_info, service=:service, service_cat=:service_cat, rate=:rate WHERE id=:id");
 			$stmt->execute(['email'=>$email, 'password'=>$password, 'firstname'=>$firstname, 'lastname'=>$lastname, 'address'=>$address, 'contact_info'=>$contact_info, 'service'=>$service, 'service_cat'=>$service_cat, 'rate'=>$rate, 'id'=>$id]);
