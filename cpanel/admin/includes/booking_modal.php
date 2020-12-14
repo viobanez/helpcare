@@ -112,7 +112,7 @@
                                 $stmt = $conn->prepare("SELECT * FROM booking ORDER BY id DESC LIMIT 1");
                                 $stmt->execute();
                                 foreach($stmt as $row){
-                                  echo " <input type='text' class='form-control' name='book_no' value='HC2020".$row['id']."12'>";
+                                  echo "<input type='text' class='form-control' name='book_no' value='HC2020".$row['id']."12'> ";
                                 }
                               }
                               catch(PDOException $e){

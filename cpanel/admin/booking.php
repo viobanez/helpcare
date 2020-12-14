@@ -240,12 +240,28 @@ function getRow(id){
 }
 </script>
 
-
+<script>
+  $(function () {
+    $('#example1').DataTable({
+      responsive: true
+    })
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
 <!-- jQuery -->
 <script src="./../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="./../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="./../../dist/js/adminlte.min.js"></script>
+<script src="./datatables.min.js"></script>
+<link rel="stylesheet" href="./datatables.min.css">
 </body>
 </html>

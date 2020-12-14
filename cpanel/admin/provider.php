@@ -90,7 +90,7 @@
               <div class="box">
           
             <div class="box-body">
-              <table id="prov_table" class="table table-bordered">
+              <table id="example1" class="table table-bordered">
                 <thead>
                   <th>Photo</th>
                   <th>Service Photo</th>
@@ -285,6 +285,7 @@ function geteditCategory(id){
 }
 
 
+
 function getRow(id){
   $.ajax({
     type: 'POST',
@@ -315,7 +316,21 @@ function getRow(id){
   });
 }
 </script>
-
+<script>
+  $(function () {
+    $('#example1').DataTable({
+      responsive: true
+    })
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
 
 <!-- jQuery -->
 <script src="./../../plugins/jquery/jquery.min.js"></script>
@@ -323,6 +338,7 @@ function getRow(id){
 <script src="./../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="./../../dist/js/adminlte.min.js"></script>
-
+<script src="./datatables.min.js"></script>
+<link rel="stylesheet" href="./datatables.min.css">
 </body>
 </html>

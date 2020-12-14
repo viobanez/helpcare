@@ -221,7 +221,7 @@
               <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
             </div> -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered">
+              <table id="latestbooking" class="table table-bordered">
                 <thead>
                   <th>Book No</th>
                   <th>Email</th>
@@ -274,7 +274,7 @@
               <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
             </div> -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered">
+              <table id="tab" id="recentaccount" class="table table-bordered">
                 <thead>
                   <th>Photo</th>
                   <th>Email</th>
@@ -336,7 +336,22 @@
 </div>
 <!-- ./wrapper -->
 <!-- REQUIRED SCRIPTS -->
-
+<script>
+  $(function () {
+    $('#latestbooking').DataTable({
+      responsive: true
+    })
+    $('#recentaccount').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+  
+</script>
 <!-- jQuery -->
 <script src="./../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
@@ -350,5 +365,8 @@
 <script src="./../../dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="./../../dist/js/pages/dashboard3.js"></script>
+
+<script src="./datatables.min.js"></script>
+<link rel="stylesheet" href="./datatables.min.css">
 </body>
 </html>
