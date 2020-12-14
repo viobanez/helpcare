@@ -2,13 +2,18 @@
 	include 'includes/session.php';
 
 	if(isset($_POST['addprovider'])){
-		$firstname = $_POST['firstname'];
-		$lastname = $_POST['lastname'];
+		
 		$email = $_POST['email'];
 		$password = $_POST['password'];
+		$firstname = $_POST['firstname'];
+		$lastname = $_POST['lastname'];
 		$address = $_POST['address'];
 		$contact = $_POST['contact'];
 		$type = $_POST['type'];
+		$photo = $_POST['photo'];
+		$service_photo = $_POST['service_photo'];
+		$certificates_photo = $_POST['certificates_photo'];
+		$govid_photo = $_POST['govid_photo'];
 		$service_cat = $_POST['service_cat'];
 		$rate = $_POST['rate'];
 
@@ -24,14 +29,26 @@
 		else{
 			$password = password_hash($password, PASSWORD_DEFAULT);
 			$filename = $_FILES['photo']['name'];
+			$filename1 = $_FILES['service_photo']['name'];
+			$filename2 = $_FILES['certificates_photo']['name'];
+			$filename3 = $_FILES['govid_photo']['name'];
 			$now = date('Y-m-d');
 			if(!empty($filename)){
 				move_uploaded_file($_FILES['photo']['tmp_name'], '../images/'.$filename);	
 			}
+			if(!empty($filename1)){
+				move_uploaded_file($_FILES['service_photo']['tmp_name'], '../images/'.$filename1);	
+			}
+			if(!empty($filename2)){
+				move_uploaded_file($_FILES['certificates_photo']['tmp_name'], '../images/'.$filename2);	
+			}
+			if(!empty($filename3)){
+				move_uploaded_file($_FILES['govid_photo']['tmp_name'], '../images/'.$filename3);	
+			}
 			try{
-				$stmt = $conn->prepare("INSERT INTO users (email, password, firstname, lastname, address, contact_info, photo, status, type, service_cat, rate, created_on) VALUES (:email, :password, :firstname, :lastname, :address, :contact, :photo, :status, :type, :service_cat, :rate, :created_on)");
-				$stmt->execute(['email'=>$email, 'password'=>$password, 'firstname'=>$firstname, 'lastname'=>$lastname, 'address'=>$address, 'contact'=>$contact, 'photo'=>$filename, 'status'=>0, 'type'=>$type, 'service_cat'=>$service_cat, 'rate'=>$rate, 'created_on'=>$now]);
-				$_SESSION['success'] = 'User added successfully';
+				$stmt = $conn->prepare("INSERT INTO users (email, password, firstname, lastname, address, contact_info, photo, service_photo, certificates_photo, govid_photo, status, type, service_cat, rate, created_on) VALUES (:email, :password, :firstname, :lastname, :address, :contact, :photo, :service_photo, :certificates_photo, :govid_photo, :status, :type, :service_cat, :rate, :created_on)");
+				$stmt->execute(['email'=>$email, 'password'=>$password, 'firstname'=>$firstname, 'lastname'=>$lastname, 'address'=>$address, 'contact'=>$contact, 'photo'=>$filename, 'service_photo'=>$filename1, 'certificates_photo'=>$filename2, 'govid_photo'=>$filename3, 'status'=>0, 'type'=>2, 'service_cat'=>$service_cat, 'rate'=>$rate, 'created_on'=>$now]);
+				$_SESSION['success'] = 'Provider added successfully';
 
 			}
 			catch(PDOException $e){
@@ -42,7 +59,7 @@
 		$pdo->close();
 	}
 	else{
-		$_SESSION['error'] = 'Fill up user form first';
+		$_SESSION['error'] = 'Fill up provider form first';
 	}
 
 	header('location: provider.php');

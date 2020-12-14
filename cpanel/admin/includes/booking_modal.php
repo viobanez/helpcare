@@ -91,151 +91,151 @@
     </div>
 </div>
 <!-- Add Booking -->
-<div class="modal fade" id="addnewp">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h4 class="modal-title">
-            <b>New Booking </b></h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-            <form role="form" method="POST" action="booking_add.php"  enctype="multipart/form-data">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Booking No</label>
-                        <?php
-                            $conn = $pdo->open();
-                            try{
-                              $stmt = $conn->prepare("SELECT * FROM booking ORDER BY id DESC LIMIT 1");
-                              $stmt->execute();
-                              foreach($stmt as $row){
-                                echo " <input type='text' class='form-control' name='book_no' value='HC2020".$row['id']."12'>";
+  <div class="modal fade" id="addnewp">
+      <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+              <div class="modal-header">
+              <h4 class="modal-title">
+              <b>New Booking </b></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+              <form role="form" method="POST" action="booking_add.php"  enctype="multipart/form-data">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Booking No</label>
+                          <?php
+                              $conn = $pdo->open();
+                              try{
+                                $stmt = $conn->prepare("SELECT * FROM booking ORDER BY id DESC LIMIT 1");
+                                $stmt->execute();
+                                foreach($stmt as $row){
+                                  echo " <input type='text' class='form-control' name='book_no' value='HC2020".$row['id']."12'>";
+                                }
                               }
-                            }
-                            catch(PDOException $e){
-                              echo $e->getMessage();
-                            }
-                            $pdo->close();
-                          ?>
+                              catch(PDOException $e){
+                                echo $e->getMessage();
+                              }
+                              $pdo->close();
+                            ?>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Customer Name</label>
+                          <input type="text" class="form-control" name="user_name">
+                        </div>
                       </div>
                     </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Customer Name</label>
-                        <input type="text" class="form-control" name="user_name">
-                      </div>
-                    </div>
-                  </div>
 
-                  <div class="row">
-                    <div class="col-sm-6">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        
+                        <div class="form-group">
+                          <label>Email</label>
+                          <input type="text" class="form-control" name="email">
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Service and Rate</label>
+                          <!-- <input type="text" class="form-control" > -->
+                          <select class="form-control" name="service_and_rate">
+                          <?php
+                              $conn = $pdo->open();
+                              try{
+                                $stmt = $conn->prepare("SELECT * FROM users WHERE type=:type");
+                                $stmt->execute(['type'=>2]);
+                                foreach($stmt as $row){
+                                  echo "
+                                      <option value='".$row['service_cat']." - ".$row['rate']."'>".$row['service_cat']." - ".$row['rate']."</option>
+                                  ";
+                                }
+                              }
+                              catch(PDOException $e){
+                                echo $e->getMessage();
+                              }
+                              $pdo->close();
+                            ?>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Date</label>
+                          <input type="date" class="form-control" name="date_book">
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Time</label>
+                          <input type="time" class="form-control" name="time">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label>Address</label>
+                          <!-- <input type="text" class="form-control" placeholder="Enter ..." disabled=""> -->
+                          <textarea class="form-control" name="address"></textarea>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label>Extra Notes</label>
+                          <!-- <input type="text" class="form-control" placeholder="Enter ..." disabled=""> -->
+                          <textarea class="form-control" name="special_instructions"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="row">
+                      <div class="col-sm-12">
                       
-                      <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" class="form-control" name="email">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Service and Rate</label>
-                        <!-- <input type="text" class="form-control" > -->
-                        <select class="form-control" name="service_and_rate">
-                        <?php
-                            $conn = $pdo->open();
-                            try{
-                              $stmt = $conn->prepare("SELECT * FROM users WHERE type=:type");
-                              $stmt->execute(['type'=>2]);
-                              foreach($stmt as $row){
-                                echo "
-                                    <option value='".$row['service_cat']." - ".$row['rate']."'>".$row['service_cat']." - ".$row['rate']."</option>
-                                ";
+                        <div class="form-group">
+                          <label>Provider Name</label>
+                          <select class="form-control">
+                          <//?php
+                              $conn = $pdo->open();
+
+                              try{
+                                $stmt = $conn->prepare("SELECT * FROM users WHERE type=:type");
+                                $stmt->execute(['type'=>2]);
+                                foreach($stmt as $row){
+                                  echo "
+                                      <option>".$row['firstname']." ".$row['lasttname']."</option>
+                                  ";
+                                }
                               }
-                            }
-                            catch(PDOException $e){
-                              echo $e->getMessage();
-                            }
-                            $pdo->close();
-                          ?>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Date</label>
-                        <input type="date" class="form-control" name="date_book">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Time</label>
-                        <input type="time" class="form-control" name="time">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <div class="form-group">
-                        <label>Address</label>
-                        <!-- <input type="text" class="form-control" placeholder="Enter ..." disabled=""> -->
-                        <textarea class="form-control" name="address"></textarea>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <div class="form-group">
-                        <label>Extra Notes</label>
-                        <!-- <input type="text" class="form-control" placeholder="Enter ..." disabled=""> -->
-                        <textarea class="form-control" name="special_instructions"></textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- <div class="row">
-                    <div class="col-sm-12">
-                     
-                      <div class="form-group">
-                        <label>Provider Name</label>
-                        <select class="form-control">
-                        <//?php
-                            $conn = $pdo->open();
-
-                            try{
-                              $stmt = $conn->prepare("SELECT * FROM users WHERE type=:type");
-                              $stmt->execute(['type'=>2]);
-                              foreach($stmt as $row){
-                                echo "
-                                    <option>".$row['firstname']." ".$row['lasttname']."</option>
-                                ";
+                              catch(PDOException $e){
+                                echo $e->getMessage();
                               }
-                            }
-                            catch(PDOException $e){
-                              echo $e->getMessage();
-                            }
 
-                            $pdo->close();
-                          ?>
-                      
-                        </select>
-                       
+                              $pdo->close();
+                            ?>
+                        
+                          </select>
+                        
+                        </div>
                       </div>
-                    </div>
-                  </div> -->
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-              <button type="submit" class="btn btn-primary btn-flat" name="addbooking"><i class="fa fa-save"></i> Save</button>
-              </form>
-            </div>
-        </div>
-    </div>
-</div>
+                    </div> -->
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+                <button type="submit" class="btn btn-primary btn-flat" name="addbooking"><i class="fa fa-save"></i> Save</button>
+                </form>
+              </div>
+          </div>
+      </div>
+  </div>
 
 <!-- Edit -->
 <div class="modal fade" id="edit">
