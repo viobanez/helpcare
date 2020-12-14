@@ -50,10 +50,10 @@ $(function(){
 <!-- Data Table Initialize -->
 <script>
   $(function () {
-    $('#example1').DataTable({
+    $('#prov_table').DataTable({
       responsive: true
     })
-    $('#example2').DataTable({
+    $('#prov_table').DataTable({
       'paging'      : true,
       'lengthChange': false,
       'searching'   : false,

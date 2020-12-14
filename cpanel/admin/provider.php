@@ -13,6 +13,15 @@
   <link rel="stylesheet" href="./../../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="./../../dist/css/adminlte.min.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="./../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+
+    <!-- jQuery 3 -->
+    <script src="./../../bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="./../../bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="./../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -79,13 +88,14 @@
             <div class="card">
               <div class="card-body">
               <div class="box">
-            <!-- <div class="box-header with-border">
-              <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
-            </div> -->
+          
             <div class="box-body">
-              <table id="example1" class="table table-bordered">
+              <table id="prov_table" class="table table-bordered">
                 <thead>
                   <th>Photo</th>
+                  <th>Service Photo</th>
+                  <th>Certificate Photo</th>
+                  <th>Gov ID Photo</th>
                   <th>Email</th>
                   <th>Name</th>
                   <th>Application Status</th>
@@ -101,6 +111,9 @@
                       $stmt->execute(['type'=>2]);
                       foreach($stmt as $row){
                         $image = (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg';
+                        $image1 = (!empty($row['certificates_photo'])) ? '../images/'.$row['certificates_photo'] : '../images/profile.jpg';
+                        $image2 = (!empty($row['govid_photo'])) ? '../images/'.$row['govid_photo'] : '../images/profile.jpg';
+                        $image3 = (!empty($row['service_photo'])) ? '../images/'.$row['service_photo'] : '../images/profile.jpg';
                         $status = ($row['status']) ? '<span class="label label-success">Active</span>' : '<span class="label label-danger">Inactive</span>';
                         $active = (!$row['status']) ? '<span class="pull-right"><a href="#proactivate" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i><i class="fa fa-edit"></i></a></span>' : '<span class="pull-right"><a href="#prodeactivate" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i><i class="fa fa-edit"></i></a></span>';
                         echo "
@@ -109,6 +122,18 @@
                               <img src='".$image."' height='30px' width='30px'>
                               <span class='pull-right'><a href='#edit_providerphoto' class='photoprovider' data-toggle='modal' data-id='".$row['id']."'><i class='fa fa-edit'></i></a></span>
                             </td>
+                            <td>
+                            <img src='".$image3."' height='30px' width='30px'>
+                            <span class='pull-right'><a href='#edit_providerphotoservice' class='photoprovider' data-toggle='modal' data-id='".$row['id']."'><i class='fa fa-edit'></i></a></span>
+                          </td>
+                            <td>
+                            <img src='".$image1."' height='30px' width='30px'>
+                            <span class='pull-right'><a href='#edit_providerphotocert' class='photoprovider' data-toggle='modal' data-id='".$row['id']."'><i class='fa fa-edit'></i></a></span>
+                          </td>
+                          <td>
+                          <img src='".$image2."' height='30px' width='30px'>
+                          <span class='pull-right'><a href='#edit_providerphotogov' class='photoprovider' data-toggle='modal' data-id='".$row['id']."'><i class='fa fa-edit'></i></a></span>
+                        </td>
                             <td>".$row['email']."</td>
                             <td>".$row['firstname'].' '.$row['lastname']."</td>
                             <td>
@@ -119,7 +144,7 @@
                             <td>
                             <a href='#service' data-toggle='modal' class='btn btn-info btn-sm btn-flat desc' data-id='".$row['id']."'><i class='fa fa-search'></i> View Service</a>
                               <button class='btn btn-success btn-sm editservice_cat btn-flat' data-id='".$row['id']."' id='editnewp'><i class='fa fa-edit'></i> Edit</button>
-                              <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
+                              <button class='btn btn-danger btn-sm pdelete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
                             </td>
                           </tr>
                         ";
@@ -185,9 +210,9 @@ $(function(){
     getRow(id);
   });
 
-  $(document).on('click', '.delete', function(e){
+  $(document).on('click', '.pdelete', function(e){
     e.preventDefault();
-    $('#delete').modal('show');
+    $('#prodelete').modal('show');
     var id = $(this).data('id');
     getRow(id);
   });
@@ -268,9 +293,10 @@ function getRow(id){
     dataType: 'json',
     success: function(response){
       $('.userid').val(response.id);
-      $('#desc').html(response.service_cat+' - '+response.rate);
+      $('#serv').html(response.service);
+      $('#desc').html(response.service_cat +' - '+response.rate);
       $('#service_category').val(response.service_cat);
-     // $('#service_catee').val(response.service_cat);
+    
       $('#rate').val(response.rate);
       $('.name').html(response.prodname);
 
@@ -281,7 +307,8 @@ function getRow(id){
       $('#editaddress').val(response.address);
       $('#editcontact').val(response.contact_info); 
       $('#appstat').val(response.reg_status);
-      $('#editservicecat').val(response.service_cat);
+      $('#editservice').val(response.service);
+      $('#service_cate').val(response.service_cat);
       $('#editrate').val(response.rate);
       $('.fullname').html(response.firstname+' '+response.lastname);
     }
@@ -296,5 +323,6 @@ function getRow(id){
 <script src="./../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="./../../dist/js/adminlte.min.js"></script>
+
 </body>
 </html>
