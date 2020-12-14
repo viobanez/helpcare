@@ -168,7 +168,7 @@
                     <label for="contact" class="col-sm-3 control-label">Charge Rate</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="contact" name="rate">
+                      <input type="text" class="form-control" id="contact" name="rate" value="&#8369;">
                     </div>
                 </div>
 
@@ -328,7 +328,7 @@
                     <label for="contact" class="col-sm-3 control-label">Charge Rate</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="editrate" name="rate">
+                      <input type="text" class="form-control" id="editrate" name="rate" >
                     </div>
                 </div>
 

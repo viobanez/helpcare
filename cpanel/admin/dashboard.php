@@ -226,7 +226,7 @@
                   <th>Book No</th>
                   <th>Email</th>
                   <th>Name</th>
-                  <th>Status</th>
+                  <th>Booking Status</th>
                   <th>Date Added</th>
                 </thead>
                 <tbody>
@@ -237,12 +237,12 @@
                       $stmt->execute();
                       foreach($stmt as $row){
                         $image = (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg';
-                        $status = ($row['status']) ? '<span class="label label-success">active</span>' : '<span class="label label-danger">not verified</span>';
+                        $status = ($row['status']) ? '<span class="label label-success">Approved</span>' : '<span class="label label-danger">Rejected</span>';
                         $active = (!$row['status']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i></a></span>' : '';
                         echo "
                           <tr>
                             <td>".$row['book_no']."</td>
-                            <td>".$row['service']."</td>
+                            <td>".$row['service_and_rate']."</td>
                             <td>".$row['provider_name']."</td>
                             <td>
                               ".$status."
@@ -279,7 +279,7 @@
                   <th>Photo</th>
                   <th>Email</th>
                   <th>Name</th>
-                  <th>Status</th>
+                  <th>Profile Status</th>
                   <th>Date Added</th>
                 </thead>
                 <tbody>
@@ -290,7 +290,7 @@
                       $stmt->execute(['type'=>0]);
                       foreach($stmt as $row){
                         $image = (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg';
-                        $status = ($row['status']) ? '<span class="label label-success">active</span>' : '<span class="label label-danger">not verified</span>';
+                        $status = ($row['status']) ? '<span class="label label-success">Active</span>' : '<span class="label label-danger">Inactive</span>';
                         $active = (!$row['status']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i></a></span>' : '';
                         echo "
                           <tr>

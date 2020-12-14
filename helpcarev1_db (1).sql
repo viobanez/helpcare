@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2020 at 11:54 PM
+-- Generation Time: Dec 13, 2020 at 06:46 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -32,13 +32,13 @@ CREATE TABLE `booking` (
   `email` varchar(50) DEFAULT NULL,
   `user_name` varchar(255) DEFAULT NULL,
   `provider_name` varchar(255) DEFAULT NULL,
-  `service` varchar(255) DEFAULT NULL,
   `category_name` varchar(255) DEFAULT NULL,
-  `price` varchar(10) DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
   `date_book` date DEFAULT NULL,
+  `time` varchar(8) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
   `book_no` varchar(50) DEFAULT NULL,
+  `service_and_rate` varchar(255) NOT NULL,
   `modeofpayment` varchar(255) DEFAULT NULL,
   `special_instructions` varchar(500) DEFAULT NULL,
   `date_added` date DEFAULT NULL
@@ -48,8 +48,12 @@ CREATE TABLE `booking` (
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`id`, `email`, `user_name`, `provider_name`, `service`, `category_name`, `price`, `status`, `date_book`, `address`, `book_no`, `modeofpayment`, `special_instructions`, `date_added`) VALUES
-(1, 'admin@mail.com', 'Admin', 'Test', 'Carpentry', 'testcat', '2', 'Approved', '2020-12-09', 'Test Address', 'HC20201209', 'cash', NULL, '2020-12-09');
+INSERT INTO `booking` (`id`, `email`, `user_name`, `provider_name`, `category_name`, `status`, `date_book`, `time`, `address`, `book_no`, `service_and_rate`, `modeofpayment`, `special_instructions`, `date_added`) VALUES
+(1, 'admin@mail.com', 'Admin', 'Test', 'testcat', 'Approved', '2020-12-09', '', 'Test Address', 'HC20201209', '', 'cash', NULL, '2020-12-09'),
+(3, NULL, 'rt', NULL, NULL, NULL, NULL, '', NULL, 'HC2020112', '', NULL, NULL, '2020-12-13'),
+(4, NULL, 'ssss', NULL, NULL, NULL, NULL, '', NULL, 'HC2020312', '', NULL, NULL, '2020-12-13'),
+(5, NULL, 'fff', NULL, NULL, NULL, NULL, '', NULL, 'HC2020412', '', NULL, NULL, '2020-12-13'),
+(6, 'TEst@sdsd.com', 'TEst', NULL, NULL, NULL, '2020-12-14', '00:47', 'testtesttesttesttest', 'HC2020512', 'Carpentry - ?1.00', NULL, 'test11', '2020-12-13');
 
 -- --------------------------------------------------------
 
@@ -114,6 +118,13 @@ CREATE TABLE `sub_category` (
   `subcat_name` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `sub_category`
+--
+
+INSERT INTO `sub_category` (`id`, `category`, `subcat_name`) VALUES
+(8, 'Carpentry', 'Tesdt');
+
 -- --------------------------------------------------------
 
 --
@@ -146,7 +157,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `email`, `password`, `type`, `firstname`, `lastname`, `address`, `contact_info`, `photo`, `status`, `reg_status`, `activate_code`, `reset_code`, `created_on`, `service_cat`, `rate`) VALUES
 (1, 'test@provider.com', '$2y$10$8wY63GX/y9Bq780GBMpxCesV9n1H6WyCqcA2hNy2uhC59hEnOpNaS', 1, 'Pro', 'vider', '', '', 'facebook-profile-image.jpeg', 1, 'not verified', '', '', '2020-12-01', '-', '-'),
 (13, 'x@x.com', '$2y$10$BdXa5URQNAWXp22NvJIimeSecX2A2rowu6X3yP4Xx31r4df/ReYIK', 0, 'service', 'provider', 'test', '211212', 'profile.jpg', 1, 'not verified', '', '', '2020-12-08', '-', '-'),
-(16, 'test@with.com', '$2y$10$SFSOJr0Eav8C6JASyRyPUOBpp28bNc7gnhz8BHcw2DgaYaJpockgy', 2, 'test', 'with', 'withaddress', '23232', 'photo4.jpg', 0, 'not verified', '', '', '2020-12-09', 'Carpentry', '1.00'),
+(16, 'test@with.com', '$2y$10$SFSOJr0Eav8C6JASyRyPUOBpp28bNc7gnhz8BHcw2DgaYaJpockgy', 2, 'test', 'with', 'withaddress', '23232', 'photo4.jpg', 0, 'not verified', '', '', '2020-12-09', 'Carpentry', '?1.00'),
 (17, 'sd@s.com', '$2y$10$W6cE9ewLm1h4BQUXNKRJAO8IE16zhiHU6sn5fAimgRjqwJoTj/rL.', 2, 'S', 'D', 'address', '1212', 'user1-128x128.jpg', 1, 'Pending', '', '', '2020-12-10', '', '');
 
 --
@@ -191,7 +202,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -209,7 +220,7 @@ ALTER TABLE `cpanel_users`
 -- AUTO_INCREMENT for table `sub_category`
 --
 ALTER TABLE `sub_category`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`

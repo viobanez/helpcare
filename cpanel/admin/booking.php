@@ -86,8 +86,8 @@
                 <thead>
                   <th>Book No.</th>
                   <th>Customer Name</th>
-                  <th>Email</th>               
-                  <th>Status</th>
+                          
+                  <th>Booking Status</th>
                   <th>Service</th>
                   <th>Category</th>
                   <th>Book Date</th>
@@ -98,29 +98,27 @@
                     $conn = $pdo->open();
 
                     try{
-                      $stmt = $conn->prepare("SELECT * FROM booking ");
+                      $stmt = $conn->prepare("SELECT * FROM booking ORDER BY id DESC ");
                       $stmt->execute();
                       foreach($stmt as $row){
                         //$image = (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg';
-                        $status = ($row['status']) ? '<span class="label label-success">active</span>' : '<span class="label label-danger">not verified</span>';
+                        $status = ($row['status']) ? '<span class="label label-success">Approved</span>' : '<span class="label label-danger">Rejected</span>';
                         $active = (!$row['status']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i></a></span>' : '';
                         echo "
                           <tr>
                             <td>".$row['book_no']."</td>
                             <td>".$row['user_name']."</td>
-                            <td>".$row['email']."</td>
-                            
                             <td>
                               ".$status."
                               ".$active."
                             </td>
-                            <td>".$row['service']."</td>
+                            <td>".$row['service_and_rate']."</td>
                             <td>".$row['category_name']."</td>
                             <td>".date('M d, Y', strtotime($row['date_book']))."</td>
                             <td>
-                             
-                              <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
-                              <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
+                            <a href='#instruct' data-toggle='modal' class='btn btn-info btn-sm btn-flat inst' data-id='".$row['id']."'><i class='fa fa-search'></i> Details</a>
+                            <!--  <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button> -->
+                              <!-- <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button> -->
                             </td>
                           </tr>
                         ";
@@ -191,6 +189,12 @@ $(function(){
     getRow(id);
   });
 
+  $(document).on('click', '.inst', function(e){
+    e.preventDefault();
+    var id = $(this).data('id');
+    getBook(id);
+  });
+
   $(document).on('click', '.status', function(e){
     e.preventDefault();
     var id = $(this).data('id');
@@ -198,6 +202,22 @@ $(function(){
   });
 
 });
+
+function getBook(id){
+  $.ajax({
+    type: 'POST',
+    url: 'booking_row.php',
+    data: {id:id},
+    dataType: 'json',
+    success: function(response){
+      $('.userid').val(response.id);
+      $('#email').html(response.email);
+      $('#address').html(response.address);
+      $('#instructions').html(response.special_instructions);
+     
+    }
+  });
+}
 
 function getRow(id){
   $.ajax({
@@ -213,6 +233,7 @@ function getRow(id){
       $('#edit_lastname').val(response.lastname);
       $('#edit_address').val(response.address);
       $('#edit_contact').val(response.contact_info);
+      $('#instructions').html(response.special_instructions);
       $('.fullname').html(response.firstname+' '+response.lastname);
     }
   });
