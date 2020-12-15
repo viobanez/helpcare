@@ -112,7 +112,7 @@
                                 $stmt = $conn->prepare("SELECT * FROM booking ORDER BY id DESC LIMIT 1");
                                 $stmt->execute();
                                 foreach($stmt as $row){
-                                  echo "<input type='text' class='form-control' name='book_no' value='HC2020".$row['id']."12'> ";
+                                  echo "<input type='text' class='form-control' name='book_no' value='HC2020".$row['id']."12' readonly> ";
                                 }
                               }
                               catch(PDOException $e){
@@ -122,20 +122,47 @@
                             ?>
                         </div>
                       </div>
+                      
+                    </div>
+
+                    <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label>Customer Name</label>
                           <input type="text" class="form-control" name="user_name" value="<?php echo $admin['firstname'].' '.$admin['lastname']; ?>" readonly>
                         </div>
                       </div>
-                    </div>
-
-                    <div class="row">
                       <div class="col-sm-6">
-                        
                         <div class="form-group">
                           <label>Email</label>
-                          <input type="text" class="form-control" name="email">
+                          <input type="text" class="form-control" name="email" value="<?php echo $admin['email']; ?>" readonly>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Service Category</label>
+                          <!-- <input type="text" class="form-control" > -->
+                          <select class="form-control" name="service_and_rate">
+                          <?php
+                              $conn = $pdo->open();
+                              try{
+                                $stmt = $conn->prepare("SELECT * FROM users WHERE type=:type");
+                                $stmt->execute(['type'=>2]);
+                                foreach($stmt as $row){
+                                  echo "
+                                      <option value='".$row['service_cat']." - ".$row['rate']."'>".$row['service_cat']." - ".$row['rate']."</option>
+                                  ";
+                                }
+                              }
+                              catch(PDOException $e){
+                                echo $e->getMessage();
+                              }
+                              $pdo->close();
+                            ?>
+                          </select>
                         </div>
                       </div>
                       <div class="col-sm-6">
