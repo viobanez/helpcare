@@ -159,12 +159,6 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Service Offered</label>
-                        <input type="text" class="form-control" name="service_cat">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
                         <label>Category</label>
                         <!-- <input type="text" class="form-control" name=""> -->.
                         <select class="form-control" name="category">
@@ -188,6 +182,13 @@
                           </select>
                       </div>
                     </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Service Offered</label>
+                        <input type="text" class="form-control" name="service_cat">
+                      </div>
+                    </div>
+                    
                   </div>
                   <div class="row">
                     <div class="col-sm-6">

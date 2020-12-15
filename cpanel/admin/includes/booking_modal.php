@@ -145,15 +145,15 @@
                         <div class="form-group">
                           <label>Service Category</label>
                           <!-- <input type="text" class="form-control" > -->
-                          <select class="form-control" name="service_and_rate">
+                          <select class="form-control" name="service_and_rate" id="colorselector" >
                           <?php
                               $conn = $pdo->open();
                               try{
-                                $stmt = $conn->prepare("SELECT * FROM users WHERE type=:type");
-                                $stmt->execute(['type'=>2]);
+                                $stmt = $conn->prepare("SELECT * FROM category");
+                                $stmt->execute();
                                 foreach($stmt as $row){
                                   echo "
-                                      <option value='".$row['service_cat']." - ".$row['rate']."'>".$row['service_cat']." - ".$row['rate']."</option>
+                                      <option value='".$row['name']."'>".$row['name']."</option>
                                   ";
                                 }
                               }
@@ -168,8 +168,7 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label>Service and Rate</label>
-                          <!-- <input type="text" class="form-control" > -->
-                          <select class="form-control" name="service_and_rate">
+                          <select class="form-control" name="service_and_rate" >
                           <?php
                               $conn = $pdo->open();
                               try{
@@ -206,23 +205,24 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-sm-12">
+                      <div class="col-sm-6">
                         <div class="form-group">
                           <label>Address</label>
                           <!-- <input type="text" class="form-control" placeholder="Enter ..." disabled=""> -->
                           <textarea class="form-control" name="address"></textarea>
                         </div>
                       </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-sm-12">
+                      <div class="col-sm-6">
                         <div class="form-group">
                           <label>Extra Notes</label>
                           <!-- <input type="text" class="form-control" placeholder="Enter ..." disabled=""> -->
                           <textarea class="form-control" name="special_instructions"></textarea>
                         </div>
                       </div>
+                    </div>
+
+                    <div class="row">
+                      
                     </div>
                     <!-- <div class="row">
                       <div class="col-sm-12">
@@ -405,6 +405,14 @@
         </div>
     </div>
 </div> 
+<script>
+  $(function() {
+        $('#colorselector').change(function(){
+            $('.colors').hide();
+            $('#' + $(this).val()).show();
+        });
+    });
+</script>
 
 
      
