@@ -78,15 +78,14 @@
             <div class="card">
               <div class="card-body">
               <div class="box">
-            <!-- <div class="box-header with-border">
-              <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
-            </div> -->
+              <div class="box-header text-right with-border pull-right">
+                Search  <input type="text" id="myInput" onkeyup="bookingSearch()" placeholder="type keyword.." >
+              </div>
             <div class="box-body">
-              <table id="example1" class="table table-bordered">
+              <table id="myTable" class="table table-bordered">
                 <thead>
-                  <th>Book No.</th>
                   <th>Customer Name</th>
-                          
+                  <th>Book No.</th>
                   <th>Booking Status</th>
                   <th>Service</th>
                   <th>Category</th>
@@ -106,8 +105,9 @@
                         $active = (!$row['status']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i></a></span>' : '';
                         echo "
                           <tr>
-                            <td>".$row['book_no']."</td>
                             <td>".$row['user_name']."</td>
+                            <td>".$row['book_no']."</td>
+                            
                             <td>
                               ".$status."
                               ".$active."
@@ -240,12 +240,34 @@ function getRow(id){
 }
 </script>
 
-
+<script>
+function bookingSearch() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+ 
+</script>
 <!-- jQuery -->
 <script src="./../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="./../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="./../../dist/js/adminlte.min.js"></script>
+<!-- <script src="./datatables.min.js"></script>
+<link rel="stylesheet" href="./datatables.min.css"> -->
 </body>
 </html>

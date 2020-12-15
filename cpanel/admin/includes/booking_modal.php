@@ -112,7 +112,7 @@
                                 $stmt = $conn->prepare("SELECT * FROM booking ORDER BY id DESC LIMIT 1");
                                 $stmt->execute();
                                 foreach($stmt as $row){
-                                  echo " <input type='text' class='form-control' name='book_no' value='HC2020".$row['id']."12'>";
+                                  echo "<input type='text' class='form-control' name='book_no' value='HC2020".$row['id']."12' readonly> ";
                                 }
                               }
                               catch(PDOException $e){
@@ -122,27 +122,53 @@
                             ?>
                         </div>
                       </div>
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <label>Customer Name</label>
-                          <input type="text" class="form-control" name="user_name">
-                        </div>
-                      </div>
+                      
                     </div>
 
                     <div class="row">
                       <div class="col-sm-6">
-                        
+                        <div class="form-group">
+                          <label>Customer Name</label>
+                          <input type="text" class="form-control" name="user_name" value="<?php echo $admin['firstname'].' '.$admin['lastname']; ?>" readonly>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
                         <div class="form-group">
                           <label>Email</label>
-                          <input type="text" class="form-control" name="email">
+                          <input type="text" class="form-control" name="email" value="<?php echo $admin['email']; ?>" readonly>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Service Category</label>
+                          <!-- <input type="text" class="form-control" > -->
+                          <select class="form-control" name="service_and_rate" id="colorselector" >
+                          <?php
+                              $conn = $pdo->open();
+                              try{
+                                $stmt = $conn->prepare("SELECT * FROM category");
+                                $stmt->execute();
+                                foreach($stmt as $row){
+                                  echo "
+                                      <option value='".$row['name']."'>".$row['name']."</option>
+                                  ";
+                                }
+                              }
+                              catch(PDOException $e){
+                                echo $e->getMessage();
+                              }
+                              $pdo->close();
+                            ?>
+                          </select>
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label>Service and Rate</label>
-                          <!-- <input type="text" class="form-control" > -->
-                          <select class="form-control" name="service_and_rate">
+                          <select class="form-control" name="service_and_rate" >
                           <?php
                               $conn = $pdo->open();
                               try{
@@ -179,23 +205,24 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-sm-12">
+                      <div class="col-sm-6">
                         <div class="form-group">
                           <label>Address</label>
                           <!-- <input type="text" class="form-control" placeholder="Enter ..." disabled=""> -->
                           <textarea class="form-control" name="address"></textarea>
                         </div>
                       </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-sm-12">
+                      <div class="col-sm-6">
                         <div class="form-group">
                           <label>Extra Notes</label>
                           <!-- <input type="text" class="form-control" placeholder="Enter ..." disabled=""> -->
                           <textarea class="form-control" name="special_instructions"></textarea>
                         </div>
                       </div>
+                    </div>
+
+                    <div class="row">
+                      
                     </div>
                     <!-- <div class="row">
                       <div class="col-sm-12">
@@ -378,6 +405,14 @@
         </div>
     </div>
 </div> 
+<script>
+  $(function() {
+        $('#colorselector').change(function(){
+            $('.colors').hide();
+            $('#' + $(this).val()).show();
+        });
+    });
+</script>
 
 
      

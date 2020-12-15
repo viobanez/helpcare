@@ -87,16 +87,19 @@
           <div class="col-lg-12">
             <div class="card">
               <div class="card-body">
+               <div class="box-header text-right with-border pull-right">
+                Search  <input type="text" id="myInput" onkeyup="providerSearch()" placeholder="type keyword.." >
+              </div>
               <div class="box">
-          
             <div class="box-body">
-              <table id="prov_table" class="table table-bordered">
+              <table id="myTable" class="table table-bordered">
                 <thead>
+                  <th>Email</th>
                   <th>Photo</th>
                   <th>Service Photo</th>
                   <th>Certificate Photo</th>
                   <th>Gov ID Photo</th>
-                  <th>Email</th>
+           
                   <th>Name</th>
                   <th>Application Status</th>
                   <th>Date Added</th>
@@ -118,6 +121,7 @@
                         $active = (!$row['status']) ? '<span class="pull-right"><a href="#proactivate" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i><i class="fa fa-edit"></i></a></span>' : '<span class="pull-right"><a href="#prodeactivate" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i><i class="fa fa-edit"></i></a></span>';
                         echo "
                           <tr>
+                            <td>".$row['email']."</td>
                             <td>
                               <img src='".$image."' height='30px' width='30px'>
                               <span class='pull-right'><a href='#edit_providerphoto' class='photoprovider' data-toggle='modal' data-id='".$row['id']."'><i class='fa fa-edit'></i></a></span>
@@ -134,7 +138,7 @@
                           <img src='".$image2."' height='30px' width='30px'>
                           <span class='pull-right'><a href='#edit_providerphotogov' class='photoprovider' data-toggle='modal' data-id='".$row['id']."'><i class='fa fa-edit'></i></a></span>
                         </td>
-                            <td>".$row['email']."</td>
+                         
                             <td>".$row['firstname'].' '.$row['lastname']."</td>
                             <td>
                               ".$status."
@@ -285,6 +289,7 @@ function geteditCategory(id){
 }
 
 
+
 function getRow(id){
   $.ajax({
     type: 'POST',
@@ -315,7 +320,26 @@ function getRow(id){
   });
 }
 </script>
-
+<script>
+  function providerSearch() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
 
 <!-- jQuery -->
 <script src="./../../plugins/jquery/jquery.min.js"></script>
@@ -323,6 +347,7 @@ function getRow(id){
 <script src="./../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="./../../dist/js/adminlte.min.js"></script>
-
+<!-- <script src="./datatables.min.js"></script> -->
+<!-- <link rel="stylesheet" href="./datatables.min.css"> -->
 </body>
 </html>
