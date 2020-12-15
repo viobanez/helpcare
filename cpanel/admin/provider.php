@@ -94,11 +94,12 @@
             <div class="box-body">
               <table id="myTable" class="table table-bordered">
                 <thead>
+                  <th>Email</th>
                   <th>Photo</th>
                   <th>Service Photo</th>
                   <th>Certificate Photo</th>
                   <th>Gov ID Photo</th>
-                  <th>Email</th>
+           
                   <th>Name</th>
                   <th>Application Status</th>
                   <th>Date Added</th>
@@ -120,6 +121,7 @@
                         $active = (!$row['status']) ? '<span class="pull-right"><a href="#proactivate" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i><i class="fa fa-edit"></i></a></span>' : '<span class="pull-right"><a href="#prodeactivate" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i><i class="fa fa-edit"></i></a></span>';
                         echo "
                           <tr>
+                            <td>".$row['email']."</td>
                             <td>
                               <img src='".$image."' height='30px' width='30px'>
                               <span class='pull-right'><a href='#edit_providerphoto' class='photoprovider' data-toggle='modal' data-id='".$row['id']."'><i class='fa fa-edit'></i></a></span>
@@ -136,7 +138,7 @@
                           <img src='".$image2."' height='30px' width='30px'>
                           <span class='pull-right'><a href='#edit_providerphotogov' class='photoprovider' data-toggle='modal' data-id='".$row['id']."'><i class='fa fa-edit'></i></a></span>
                         </td>
-                            <td>".$row['email']."</td>
+                         
                             <td>".$row['firstname'].' '.$row['lastname']."</td>
                             <td>
                               ".$status."

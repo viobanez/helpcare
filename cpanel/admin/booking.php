@@ -84,9 +84,8 @@
             <div class="box-body">
               <table id="myTable" class="table table-bordered">
                 <thead>
-                  <th>Book No.</th>
                   <th>Customer Name</th>
-                          
+                  <th>Book No.</th>
                   <th>Booking Status</th>
                   <th>Service</th>
                   <th>Category</th>
@@ -106,8 +105,9 @@
                         $active = (!$row['status']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i></a></span>' : '';
                         echo "
                           <tr>
-                            <td>".$row['book_no']."</td>
                             <td>".$row['user_name']."</td>
+                            <td>".$row['book_no']."</td>
+                            
                             <td>
                               ".$status."
                               ".$active."
@@ -267,7 +267,7 @@ function bookingSearch() {
 <script src="./../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="./../../dist/js/adminlte.min.js"></script>
-<script src="./datatables.min.js"></script>
-<link rel="stylesheet" href="./datatables.min.css">
+<!-- <script src="./datatables.min.js"></script>
+<link rel="stylesheet" href="./datatables.min.css"> -->
 </body>
 </html>

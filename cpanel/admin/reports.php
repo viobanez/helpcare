@@ -32,9 +32,8 @@
   </nav>
   <!-- /.navbar -->
 
- 
-   <!-- Main Sidebar Container -->
-   <?php include 'includes/menubar.php'; ?>
+  <!-- Main Sidebar Container -->
+  <?php include 'includes/menubar.php'; ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -43,11 +42,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1 class="m-0">Sub Category Page</h1>
+            <h1 class="m-0">Report Page</h1>
           </div><!-- /.col --><br><br>
-          <div class="col-sm-6">
-          <a href="#sc_add" data-toggle="modal" id="addcategory" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
-          </div>
+      
         </div><!-- /.row -->
         <?php
           if(isset($_SESSION['error'])){
@@ -79,32 +76,31 @@
             <div class="card">
               <div class="card-body">
               <div class="box">
+              Booking Reports
               <div class="box-header text-right with-border pull-right">
-                Search  <input type="text" id="myInput" onkeyup="subcategoriesSearch()" placeholder="type keyword.." >
+                Search  <input type="text" id="myInput" onkeyup="reportSearch()" >
               </div>
             <div class="box-body">
-            <table id="myTable" class="table table-bordered">
+              <table id="myTable" class="table table-bordered">
                 <thead>
-                  <th>Sub-Category Name</th>
-                  <th>Category Name</th>
-                  <th>Actions</th>
+                  <th>Customer Name</th>
+                  <th>Book No.</th>
+                 
+                  <th>Book Date</th>
                 </thead>
                 <tbody>
-                  <?php
+                <?php
                     $conn = $pdo->open();
-
                     try{
-                      $stmt = $conn->prepare("SELECT * FROM sub_category");
+                      $stmt = $conn->prepare("SELECT * FROM booking ORDER BY id DESC ");
                       $stmt->execute();
                       foreach($stmt as $row){
                         echo "
                           <tr>
-                            <td>".$row['subcat_name']."</td>
-                            <td>".$row['category']."</td>
-                            <td>
-                              <button class='btn btn-success btn-sm subcat_edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
-                              <button class='btn btn-danger btn-sm subcat_delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
-                            </td>
+                            <td>".$row['user_name']."</td>
+                            <td>".$row['book_no']."</td>
+                            
+                            <td>".date('d/m/Y', strtotime($row['date_book']))."</td>
                           </tr>
                         ";
                       }
@@ -112,7 +108,6 @@
                     catch(PDOException $e){
                       echo $e->getMessage();
                     }
-
                     $pdo->close();
                   ?>
                 </tbody>
@@ -121,8 +116,6 @@
           </div>
               </div>
             </div>
-
-            
           </div>
           <!-- /.col-md-6 -->
          
@@ -146,67 +139,14 @@
   </footer>
 </div>
 
-<?php include 'includes/subcategory_modal.php'; ?>
+<?php include 'includes/booking_modal.php'; ?>
 
+<!-- ./wrapper -->
 <?php include 'includes/scripts.php'; ?>
+<!-- REQUIRED SCRIPTS -->
+
 <script>
-$(function(){
-
-  $(document).on('click', '.subcat_edit', function(e){
-    e.preventDefault();
-    $('#sc_edit').modal('show');
-    var id = $(this).data('id');
-    getRow(id);
-  });
-
-  $(document).on('click', '.subcat_delete', function(e){
-    e.preventDefault();
-    $('#sc_delete').modal('show');
-    var id = $(this).data('id');
-    getRow(id);
-  });
-
-  $('#addcategory').click(function(e){
-    e.preventDefault();
-    var id = $(this).data('id');
-    getCategory(id);
-  });
-
-  $("#sc_add").on("hidden.bs.modal", function () {
-      $('.append_items').remove();
-  });
-
-});
-
-function getCategory(id){
-  $.ajax({
-    type: 'POST',
-    url: 'category_all.php',
-    dataType: 'json',
-    success: function(response){
-      $('#maincategory').append(response);
-      $('.userid').val(id);
-    }
-  });
-}
-
-function getRow(id){
-  $.ajax({
-    type: 'POST',
-    url: 'subcategory_row.php',
-    data: {id:id},
-    dataType: 'json',
-    success: function(response){
-      $('.subcatid').val(response.id);
-      $('#cat_name').val(response.category);
-      $('#subcat_name').val(response.subcat_name);
-      $('#sc_name').val(response.subcat_name);
-    }
-  });
-}
-</script>
-<script>
-  function subcategoriesSearch() {
+function reportSearch() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
@@ -226,16 +166,13 @@ function getRow(id){
 }
  
 </script>
-
-
 <!-- jQuery -->
 <script src="./../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="./../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="./../../dist/js/adminlte.min.js"></script>
-<!-- 
-<script src="./datatables.min.js"></script>
+<!-- <script src="./datatables.min.js"></script>
 <link rel="stylesheet" href="./datatables.min.css"> -->
 </body>
 </html>
