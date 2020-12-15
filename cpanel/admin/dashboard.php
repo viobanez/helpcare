@@ -223,8 +223,8 @@
             <div class="box-body">
               <table id="latestbooking" class="table table-bordered">
                 <thead>
-                  <th>Book No</th>
-                  <th>Email</th>
+                  <th>Book No,</th>
+                  <th>Service and Rate</th>
                   <th>Name</th>
                   <th>Booking Status</th>
                   <th>Date Added</th>

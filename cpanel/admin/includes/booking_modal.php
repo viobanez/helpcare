@@ -125,7 +125,7 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label>Customer Name</label>
-                          <input type="text" class="form-control" name="user_name">
+                          <input type="text" class="form-control" name="user_name" value="<?php echo $admin['firstname'].' '.$admin['lastname']; ?>" readonly>
                         </div>
                       </div>
                     </div>
