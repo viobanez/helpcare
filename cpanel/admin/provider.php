@@ -86,11 +86,14 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="card">
+            Search here..
               <div class="card-body">
+               <div class="box-header text-right with-border pull-right">
+                Search  <input type="text" id="myInput" onkeyup="providerSearch()" placeholder="type keyword.." >
+              </div>
               <div class="box">
-          
             <div class="box-body">
-              <table id="example1" class="table table-bordered">
+              <table id="myTable" class="table table-bordered">
                 <thead>
                   <th>Photo</th>
                   <th>Service Photo</th>
@@ -317,12 +320,24 @@ function getRow(id){
 }
 </script>
 <script>
-  $(function () {
-    $('#example1').DataTable({
-      responsive: true
-    })
-  
-  })
+  function providerSearch() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
 </script>
 
 <!-- jQuery -->
@@ -331,7 +346,7 @@ function getRow(id){
 <script src="./../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="./../../dist/js/adminlte.min.js"></script>
-<script src="./datatables.min.js"></script>
-<link rel="stylesheet" href="./datatables.min.css">
+<!-- <script src="./datatables.min.js"></script> -->
+<!-- <link rel="stylesheet" href="./datatables.min.css"> -->
 </body>
 </html>

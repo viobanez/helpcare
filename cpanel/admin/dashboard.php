@@ -366,7 +366,7 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="./../../dist/js/pages/dashboard3.js"></script>
 
-<script src="./datatables.min.js"></script>
-<link rel="stylesheet" href="./datatables.min.css">
+<!-- <script src="./datatables.min.js"></script>
+<link rel="stylesheet" href="./datatables.min.css"> -->
 </body>
 </html>
