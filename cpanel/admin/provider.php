@@ -86,7 +86,6 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="card">
-            Search here..
               <div class="card-body">
                <div class="box-header text-right with-border pull-right">
                 Search  <input type="text" id="myInput" onkeyup="providerSearch()" placeholder="type keyword.." >
