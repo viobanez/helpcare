@@ -117,8 +117,9 @@
                         $image1 = (!empty($row['certificates_photo'])) ? '../images/'.$row['certificates_photo'] : '../images/profile.jpg';
                         $image2 = (!empty($row['govid_photo'])) ? '../images/'.$row['govid_photo'] : '../images/profile.jpg';
                         $image3 = (!empty($row['service_photo'])) ? '../images/'.$row['service_photo'] : '../images/profile.jpg';
-                        $status = ($row['status']) ? '<span class="label label-success">Active</span>' : '<span class="label label-danger">Inactive</span>';
-                        $active = (!$row['status']) ? '<span class="pull-right"><a href="#proactivate" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i><i class="fa fa-edit"></i></a></span>' : '<span class="pull-right"><a href="#prodeactivate" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i><i class="fa fa-edit"></i></a></span>';
+                        $status = ($row['status']) ? '<span class="label label-success">Accepted</span>' : '<span class="label label-danger">Processing</span>';
+                        
+                        $active = (!$row['status']) ? '<span class="pull-right"><a href="#prostatus" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i><i class="fa fa-edit"></i></a></span>' : '<span class="pull-right"><a href="#prostatus" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i><i class="fa fa-edit"></i></a></span>';
                         echo "
                           <tr>
                             <td>".$row['email']."</td>
@@ -140,10 +141,7 @@
                         </td>
                          
                             <td>".$row['firstname'].' '.$row['lastname']."</td>
-                            <td>
-                              ".$status."
-                              ".$active."
-                            </td>
+                            <td>".$row['status'].' '.$active."</td>
                             <td>".date('M d, Y', strtotime($row['created_on']))."</td>
                             <td>
                             <a href='#service' data-toggle='modal' class='btn btn-info btn-sm btn-flat desc' data-id='".$row['id']."'><i class='fa fa-search'></i> View Service</a>
@@ -310,6 +308,7 @@ function getRow(id){
       $('#editfirstname').val(response.firstname);
       $('#editlastname').val(response.lastname);
       $('#editaddress').val(response.address);
+      $('#editage').val(response.age);
       $('#editcontact').val(response.contact_info); 
       $('#appstat').val(response.reg_status);
       $('#editservice').val(response.service);

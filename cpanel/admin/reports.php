@@ -75,11 +75,11 @@
           <div class="col-lg-12">
             <div class="card">
               <div class="card-body">
-              <div class="box">
               Booking Reports
-              <div class="box-header text-right with-border pull-right">
-                Search  <input type="text" id="myInput" onkeyup="reportSearch()" >
-              </div>
+              <div class="box">
+             
+              <button id="btnExport">Excel</button>
+              <button id="btnPDF">PDF</button>
             <div class="box-body">
               <table id="myTable" class="table table-bordered">
                 <thead>
@@ -145,26 +145,37 @@
 <?php include 'includes/scripts.php'; ?>
 <!-- REQUIRED SCRIPTS -->
 
+<!-- Data Table Initialize -->
 <script>
-function reportSearch() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
- 
+  // $(function () {
+  
+  //   $('#myTable').DataTable({
+  //     'paging'      : true,
+  //     'lengthChange': true,
+  //     'searching'   : true,
+  //     'ordering'    : true,
+  //     'info'        : true,
+  //     'autoWidth'   : true,
+  //   })
+  // })
+$(document).ready(function() {
+  var table = $('#myTable').dataTable();
+    
+    $("#btnExport").click(function(e) 
+    {
+    	e.preventDefault();
+        window.open('data:application/vnd.ms-excel,' + 
+        	encodeURIComponent(table[0].outerHTML));
+    });
+
+    
+    $("#btnPDF").click(function(e) 
+    {
+    	e.preventDefault();
+        window.open('data:application/.pdf,' + 
+        escape(table[0].outerHTML));
+    });
+});
 </script>
 <!-- jQuery -->
 <script src="./../../plugins/jquery/jquery.min.js"></script>
@@ -172,7 +183,7 @@ function reportSearch() {
 <script src="./../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="./../../dist/js/adminlte.min.js"></script>
-<!-- <script src="./datatables.min.js"></script>
-<link rel="stylesheet" href="./datatables.min.css"> -->
+<script src="./datatables.min.js"></script>
+<link rel="stylesheet" href="./datatables.min.css">
 </body>
 </html>

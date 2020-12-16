@@ -95,7 +95,7 @@
         <div class="modal-content">
             <div class="modal-header">
             <h4 class="modal-title">
-            <b>AddNew Provider </b></h4>
+            <b>Add New Provider </b></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
             </div>
@@ -132,10 +132,18 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                       <div class="form-group">
                         <label>Address</label>
                         <textarea class="form-control" name="address"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <div class="form-group">
+                          <label>Age</label>
+                          <input type="text" class="form-control" name="age">
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -344,10 +352,18 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                       <div class="form-group">
                         <label>Address</label>
                         <textarea class="form-control"  id="editaddress" name="address"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <div class="form-group">
+                          <label>Age</label>
+                          <input type="text" class="form-control" id="editage" name="age">
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -620,7 +636,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h4 class="modal-title"><b>Activating Provider...</b></h4>
+            <h4 class="modal-title"><b>Application Status</b></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
               
@@ -635,7 +651,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-              <button type="submit" class="btn btn-success btn-flat" name="proactivate"><i class="fa fa-check"></i> Activate</button>
+              <button type="submit" class="btn btn-success btn-flat" name="proactivate"><i class="fa fa-check"></i> Accept</button>
               </form>
             </div>
         </div>
@@ -647,7 +663,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h4 class="modal-title"><b>Deactivating Provider...</b></h4>
+            <h4 class="modal-title"><b>Application Status</b></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
               
@@ -656,13 +672,48 @@
               <form class="form-horizontal" method="POST" action="users_prodeactivate.php">
                 <input type="hidden" class="userid" name="id">
                 <div class="text-center">
-                  
+                  <input type="text" class="" name="status" value="Rejected">
                     <h2 class="bold fullname"></h2>
                 </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-              <button type="submit" class="btn btn-danger btn-flat" name="prodeactivate"><i class="fa fa-times"></i> Deactivate</button>
+              <button type="submit" class="btn btn-danger btn-flat" name="prodeactivate"><i class="fa fa-times"></i> Reject</button>
+              </form>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<!-- Provider Application Status -->
+<div class="modal fade" id="prostatus">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h4 class="modal-title"><b>Application Status</b></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+              
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal" method="POST" action="users_status.php">
+                <input type="hidden" class="userid" name="id">
+                <b>Name :</b><h5 class="bold fullname"></h5>
+
+                <div class="text-center">
+                  <select class="form-control col-sm-6" name="status">
+                    <option value="Processing"> Processing </option>
+                    <option value="Rejected"> Rejected </option>
+                    <option value="Accepted"> Accepted </option>
+                  </select>
+                <br>
+                    
+                </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+              <button type="submit" class="btn btn-success btn-flat" name="provider_status"><i class="fa fa-times"></i> Update</button>
               </form>
             </div>
         </div>

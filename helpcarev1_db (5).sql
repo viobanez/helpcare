@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2020 at 01:53 AM
+-- Generation Time: Dec 16, 2020 at 03:21 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -53,7 +53,9 @@ INSERT INTO `booking` (`id`, `email`, `user_name`, `provider_name`, `category_na
 (3, NULL, 'rt', NULL, NULL, NULL, NULL, '', NULL, 'HC2020112', '', NULL, NULL, '2020-12-13'),
 (4, NULL, 'ssss', NULL, NULL, NULL, NULL, '', NULL, 'HC2020312', '', NULL, NULL, '2020-12-13'),
 (5, NULL, 'fff', NULL, NULL, NULL, NULL, '', NULL, 'HC2020412', '', NULL, NULL, '2020-12-13'),
-(6, 'TEst@sdsd.com', 'TEst', NULL, NULL, NULL, '2020-12-14', '00:47', 'testtesttesttesttest', 'HC2020512', 'Carpentry - ?1.00', NULL, 'test11', '2020-12-13');
+(6, 'TEst@sdsd.com', 'TEst', NULL, NULL, NULL, '2020-12-14', '00:47', 'testtesttesttesttest', 'HC2020512', 'Carpentry - ?1.00', NULL, 'test11', '2020-12-13'),
+(7, 'admin@admin.com', 'Admin istrator', NULL, NULL, NULL, '2020-12-16', '09:24', 's', 'HC2020612', 'sdsd - 22', NULL, 'sss', '2020-12-16'),
+(8, 'admin@admin.com', 'Admin istrator', NULL, 'Salon', NULL, '2020-12-16', '09:27', 'rtesd', 'HC2020712', 'sdsd - 22', NULL, 'sss', '2020-12-16');
 
 -- --------------------------------------------------------
 
@@ -139,12 +141,13 @@ CREATE TABLE `users` (
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `address` text NOT NULL,
+  `age` varchar(5) NOT NULL,
   `contact_info` varchar(100) NOT NULL,
   `photo` varchar(200) NOT NULL,
   `service_photo` varchar(200) NOT NULL,
   `certificates_photo` varchar(200) NOT NULL,
   `govid_photo` varchar(200) NOT NULL,
-  `status` int(1) NOT NULL,
+  `status` varchar(10) NOT NULL,
   `reg_status` varchar(50) DEFAULT NULL,
   `activate_code` varchar(15) NOT NULL,
   `reset_code` varchar(15) NOT NULL,
@@ -158,12 +161,13 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `type`, `firstname`, `lastname`, `address`, `contact_info`, `photo`, `service_photo`, `certificates_photo`, `govid_photo`, `status`, `reg_status`, `activate_code`, `reset_code`, `created_on`, `service`, `service_cat`, `rate`) VALUES
-(1, 'test@provider.com', '$2y$10$8wY63GX/y9Bq780GBMpxCesV9n1H6WyCqcA2hNy2uhC59hEnOpNaS', 1, 'Pro', 'vider', '', '', 'facebook-profile-image.jpeg', '', '', '', 1, 'not verified', '', '', '2020-12-01', 'sd', 'df', '-'),
-(13, 'x@x.com', '$2y$10$BdXa5URQNAWXp22NvJIimeSecX2A2rowu6X3yP4Xx31r4df/ReYIK', 0, 'service', 'provider', 'test', '211212', 'profile.jpg', '', '', '', 1, 'not verified', '', '', '2020-12-08', 's', 'd', '-'),
-(21, 'mail@m.com', '$2y$10$.lfJdAPA3K04Jo9CN3J7jeW.sUk1HAyh8BYg9TG.aaGqLKPmlBceq', 2, 'mail', 'password', 'mail', '454545', 'avatar5.png', 'photo2.png', 'prod-1.jpg', 'prod-5.jpg', 0, NULL, '', '', '2020-12-14', '', 'Clean', '11'),
-(22, 'Sds@sdd.com', '$2y$10$gnky1WMna.7hKUFuY6HW0erk72S9nZst4rWXvf4hu/5vAtTJI6/DW', 2, 'Sds', 'sdd', 'csdfsdf', 'sdfdfdfd', 'photo1.png', 'user2-160x160.jpg', 'photo4.jpg', 'photo3.jpg', 0, NULL, '', '', '2020-12-15', '', 'sdsd', '22'),
-(23, 'esd@a.com', '$2y$10$lQS.anAOhAMZtmUQ9pN9oe.W/OflCsbIdXyEj08ZOIeryrXlCq6jO', 0, 'dasda', 'sdasd', 'adasd', 'asdasd', 'user2-160x160.jpg', '', '', '', 1, NULL, '', '', '2020-12-15', '', '-', '-');
+INSERT INTO `users` (`id`, `email`, `password`, `type`, `firstname`, `lastname`, `address`, `age`, `contact_info`, `photo`, `service_photo`, `certificates_photo`, `govid_photo`, `status`, `reg_status`, `activate_code`, `reset_code`, `created_on`, `service`, `service_cat`, `rate`) VALUES
+(1, 'test@provider.com', '$2y$10$8wY63GX/y9Bq780GBMpxCesV9n1H6WyCqcA2hNy2uhC59hEnOpNaS', 1, 'admin', 'istrator', '', '', '', 'facebook-profile-image.jpeg', '', '', '', '1', 'not verified', '', '', '2020-12-01', 'sd', 'df', '-'),
+(13, 'X@x.com', '$2y$10$BdXa5URQNAWXp22NvJIimeSecX2A2rowu6X3yP4Xx31r4df/ReYIK', 0, 'service', 'provider', 'test', '', '211212', 'profile.jpg', '', '', '', '1', 'not verified', '', '', '2020-12-08', 's', 'd', '-'),
+(21, 'mail@m.com', '$2y$10$.lfJdAPA3K04Jo9CN3J7jeW.sUk1HAyh8BYg9TG.aaGqLKPmlBceq', 2, 'mail', 'password', 'mail', '', '454545', 'avatar5.png', 'photo2.png', 'prod-1.jpg', 'prod-5.jpg', 'Accepted', NULL, '', '', '2020-12-14', '', 'Clean', '11'),
+(22, 'Sds@sdd.com', '$2y$10$gnky1WMna.7hKUFuY6HW0erk72S9nZst4rWXvf4hu/5vAtTJI6/DW', 2, 'Sds', 'sdd', 'csdfsdf', '', 'sdfdfdfd', 'photo1.png', 'user2-160x160.jpg', 'photo4.jpg', 'photo3.jpg', 'Rejected', NULL, '', '', '2020-12-15', '', 'sdsd', '22'),
+(23, 'esd@a.com', '$2y$10$lQS.anAOhAMZtmUQ9pN9oe.W/OflCsbIdXyEj08ZOIeryrXlCq6jO', 0, 'dasda', 'sdasd', 'adasd', '', 'asdasd', 'user2-160x160.jpg', '', '', '', '1', NULL, '', '', '2020-12-15', '', '-', '-'),
+(24, 'eeee@df.com', '$2y$10$4svPD42JKNXsu.ZZhgLQ8ep.3CIaCrB4VHNVFL8jrTYKpEeWMD0eG', 2, 'eeee', 'df', 'eeeeeeeeeeee', '19', '3245354', 'Capture1.PNG', 'Capture1.PNG', 'Capture1.PNG', 'Capture1.PNG', 'Processing', NULL, '', '', '2020-12-16', '', 'fdgdgdg', '34');
 
 --
 -- Indexes for dumped tables
@@ -207,7 +211,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -231,7 +235,7 @@ ALTER TABLE `sub_category`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
