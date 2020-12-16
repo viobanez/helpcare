@@ -308,6 +308,7 @@ function getRow(id){
       $('#editfirstname').val(response.firstname);
       $('#editlastname').val(response.lastname);
       $('#editaddress').val(response.address);
+      $('#editage').val(response.age);
       $('#editcontact').val(response.contact_info); 
       $('#appstat').val(response.reg_status);
       $('#editservice').val(response.service);

@@ -132,10 +132,18 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                       <div class="form-group">
                         <label>Address</label>
                         <textarea class="form-control" name="address"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <div class="form-group">
+                          <label>Age</label>
+                          <input type="text" class="form-control" name="age">
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -344,10 +352,18 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                       <div class="form-group">
                         <label>Address</label>
                         <textarea class="form-control"  id="editaddress" name="address"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <div class="form-group">
+                          <label>Age</label>
+                          <input type="text" class="form-control" id="editage" name="age">
+                        </div>
                       </div>
                     </div>
                   </div>

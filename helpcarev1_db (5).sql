@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2020 at 03:02 AM
+-- Generation Time: Dec 16, 2020 at 03:21 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -141,6 +141,7 @@ CREATE TABLE `users` (
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `address` text NOT NULL,
+  `age` varchar(5) NOT NULL,
   `contact_info` varchar(100) NOT NULL,
   `photo` varchar(200) NOT NULL,
   `service_photo` varchar(200) NOT NULL,
@@ -160,12 +161,13 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `type`, `firstname`, `lastname`, `address`, `contact_info`, `photo`, `service_photo`, `certificates_photo`, `govid_photo`, `status`, `reg_status`, `activate_code`, `reset_code`, `created_on`, `service`, `service_cat`, `rate`) VALUES
-(1, 'test@provider.com', '$2y$10$8wY63GX/y9Bq780GBMpxCesV9n1H6WyCqcA2hNy2uhC59hEnOpNaS', 1, 'admin', 'istrator', '', '', 'facebook-profile-image.jpeg', '', '', '', '1', 'not verified', '', '', '2020-12-01', 'sd', 'df', '-'),
-(13, 'X@x.com', '$2y$10$BdXa5URQNAWXp22NvJIimeSecX2A2rowu6X3yP4Xx31r4df/ReYIK', 0, 'service', 'provider', 'test', '211212', 'profile.jpg', '', '', '', '1', 'not verified', '', '', '2020-12-08', 's', 'd', '-'),
-(21, 'mail@m.com', '$2y$10$.lfJdAPA3K04Jo9CN3J7jeW.sUk1HAyh8BYg9TG.aaGqLKPmlBceq', 2, 'mail', 'password', 'mail', '454545', 'avatar5.png', 'photo2.png', 'prod-1.jpg', 'prod-5.jpg', 'Accepted', NULL, '', '', '2020-12-14', '', 'Clean', '11'),
-(22, 'Sds@sdd.com', '$2y$10$gnky1WMna.7hKUFuY6HW0erk72S9nZst4rWXvf4hu/5vAtTJI6/DW', 2, 'Sds', 'sdd', 'csdfsdf', 'sdfdfdfd', 'photo1.png', 'user2-160x160.jpg', 'photo4.jpg', 'photo3.jpg', 'Rejected', NULL, '', '', '2020-12-15', '', 'sdsd', '22'),
-(23, 'esd@a.com', '$2y$10$lQS.anAOhAMZtmUQ9pN9oe.W/OflCsbIdXyEj08ZOIeryrXlCq6jO', 0, 'dasda', 'sdasd', 'adasd', 'asdasd', 'user2-160x160.jpg', '', '', '', '1', NULL, '', '', '2020-12-15', '', '-', '-');
+INSERT INTO `users` (`id`, `email`, `password`, `type`, `firstname`, `lastname`, `address`, `age`, `contact_info`, `photo`, `service_photo`, `certificates_photo`, `govid_photo`, `status`, `reg_status`, `activate_code`, `reset_code`, `created_on`, `service`, `service_cat`, `rate`) VALUES
+(1, 'test@provider.com', '$2y$10$8wY63GX/y9Bq780GBMpxCesV9n1H6WyCqcA2hNy2uhC59hEnOpNaS', 1, 'admin', 'istrator', '', '', '', 'facebook-profile-image.jpeg', '', '', '', '1', 'not verified', '', '', '2020-12-01', 'sd', 'df', '-'),
+(13, 'X@x.com', '$2y$10$BdXa5URQNAWXp22NvJIimeSecX2A2rowu6X3yP4Xx31r4df/ReYIK', 0, 'service', 'provider', 'test', '', '211212', 'profile.jpg', '', '', '', '1', 'not verified', '', '', '2020-12-08', 's', 'd', '-'),
+(21, 'mail@m.com', '$2y$10$.lfJdAPA3K04Jo9CN3J7jeW.sUk1HAyh8BYg9TG.aaGqLKPmlBceq', 2, 'mail', 'password', 'mail', '', '454545', 'avatar5.png', 'photo2.png', 'prod-1.jpg', 'prod-5.jpg', 'Accepted', NULL, '', '', '2020-12-14', '', 'Clean', '11'),
+(22, 'Sds@sdd.com', '$2y$10$gnky1WMna.7hKUFuY6HW0erk72S9nZst4rWXvf4hu/5vAtTJI6/DW', 2, 'Sds', 'sdd', 'csdfsdf', '', 'sdfdfdfd', 'photo1.png', 'user2-160x160.jpg', 'photo4.jpg', 'photo3.jpg', 'Rejected', NULL, '', '', '2020-12-15', '', 'sdsd', '22'),
+(23, 'esd@a.com', '$2y$10$lQS.anAOhAMZtmUQ9pN9oe.W/OflCsbIdXyEj08ZOIeryrXlCq6jO', 0, 'dasda', 'sdasd', 'adasd', '', 'asdasd', 'user2-160x160.jpg', '', '', '', '1', NULL, '', '', '2020-12-15', '', '-', '-'),
+(24, 'eeee@df.com', '$2y$10$4svPD42JKNXsu.ZZhgLQ8ep.3CIaCrB4VHNVFL8jrTYKpEeWMD0eG', 2, 'eeee', 'df', 'eeeeeeeeeeee', '19', '3245354', 'Capture1.PNG', 'Capture1.PNG', 'Capture1.PNG', 'Capture1.PNG', 'Processing', NULL, '', '', '2020-12-16', '', 'fdgdgdg', '34');
 
 --
 -- Indexes for dumped tables
@@ -233,7 +235,7 @@ ALTER TABLE `sub_category`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -9,10 +9,17 @@
 		$firstname = $_POST['firstname'];
 		$lastname = $_POST['lastname'];
 		$address = $_POST['address'];
+		$age = $_POST['age'];
 		$contact_info = $_POST['contact_info'];
 		$service = $_POST['service'];
 		$service_cat = $_POST['service_cat'];
 		$rate = $_POST['rate'];
+
+		if ( $age < 18 ) {
+			$_SESSION['error'] = '18 years old below are not allowed to register';
+			header('location: provider.php');
+			return;
+		}
 
 		if($password == $row['password']){
 			$password = $row['password'];
@@ -22,8 +29,9 @@
 		}
 
 		try{
-			$stmt = $conn->prepare("UPDATE users SET email=:email, password=:password, firstname=:firstname, lastname=:lastname, address=:address, contact_info=:contact_info, service=:service, service_cat=:service_cat, rate=:rate WHERE id=:id");
-			$stmt->execute(['email'=>$email, 'password'=>$password, 'firstname'=>$firstname, 'lastname'=>$lastname, 'address'=>$address, 'contact_info'=>$contact_info, 'service'=>$service, 'service_cat'=>$service_cat, 'rate'=>$rate, 'id'=>$id]);
+			$stmt = $conn->prepare("UPDATE users SET email=:email, password=:password, firstname=:firstname, lastname=:lastname, address=:address, age=:age,contact_info=:contact_info, service=:service, service_cat=:service_cat, rate=:rate WHERE id=:id");
+
+			$stmt->execute(['email'=>$email, 'password'=>$password, 'firstname'=>$firstname, 'lastname'=>$lastname, 'address'=>$address, 'age'=>$age, 'contact_info'=>$contact_info, 'service'=>$service, 'service_cat'=>$service_cat, 'rate'=>$rate, 'id'=>$id]);
 			$_SESSION['success'] = 'Provider updated successfully';
 		}
 		catch(PDOException $e){
