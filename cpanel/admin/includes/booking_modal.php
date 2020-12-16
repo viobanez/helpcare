@@ -125,13 +125,13 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label>Booking Status</label>
-                          <!-- <input type="text" class="form-control" > -->
-                          <select class="form-control" name="service_and_rate" id="status" readonly >
+                          <input type="text" class="form-control" name="service_and_rate" value="Processing" readonly>
+                          <!-- <select class="form-control" name="service_and_rate" id="status" readonly >
                               <option value="Processing"> Processing </option>
                               <option value="Confirmed"> Confirmed </option>
                               <option value="Cancelled"> Cancelled </option>
                               <option value="Paid"> Paid </option>
-                          </select>
+                          </select> -->
                         </div>
                       </div>
                     </div>
