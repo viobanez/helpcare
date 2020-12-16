@@ -87,7 +87,7 @@
                   <th>Customer Name</th>
                   <th>Book No.</th>
                   <th>Booking Status</th>
-                  <th>Service</th>
+                  <th>Service and Rate</th>
                   <th>Category</th>
                   <th>Book Date</th>
                   <th>Actions</th>
@@ -101,23 +101,19 @@
                       $stmt->execute();
                       foreach($stmt as $row){
                         //$image = (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg';
-                        $status = ($row['status']) ? '<span class="label label-success">Approved</span>' : '<span class="label label-danger">Rejected</span>';
-                        $active = (!$row['status']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i></a></span>' : '';
+                        $status = ($row['status']) ? '<span class="label label-success">Confirmed</span>' : '<span class="label label-danger">Processing</span>';
+                    
                         echo "
                           <tr>
                             <td>".$row['user_name']."</td>
                             <td>".$row['book_no']."</td>
-                            
-                            <td>
-                              ".$status."
-                              ".$active."
-                            </td>
+                            <td>".$status."</td>
                             <td>".$row['service_and_rate']."</td>
                             <td>".$row['category_name']."</td>
                             <td>".date('M d, Y', strtotime($row['date_book']))."</td>
                             <td>
-                            <a href='#instruct' data-toggle='modal' class='btn btn-info btn-sm btn-flat inst' data-id='".$row['id']."'><i class='fa fa-search'></i> Details</a>
-                            <!--  <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button> -->
+                              <a href='#instruct' data-toggle='modal' class='btn btn-info btn-sm btn-flat inst' data-id='".$row['id']."'><i class='fa fa-search'></i> Details</a>
+                              <!--  <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button> -->
                               <!-- <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button> -->
                             </td>
                           </tr>
