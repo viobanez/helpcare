@@ -237,7 +237,7 @@ function getRow(id){
 </script>
 
 <script>
-<<<<<<< Updated upstream
+
 function bookingSearch() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("myInput");
@@ -257,15 +257,15 @@ function bookingSearch() {
   }
 }
  
-=======
-  $(function () {
-    $('#example1').DataTable({
-      responsive: true,
-    });
+
+  // $(function () {
+  //   $('#example1').DataTable({
+  //     responsive: true,
+  //   });
     
-  })
+  // })
   
->>>>>>> Stashed changes
+
 </script>
 <!-- jQuery -->
 <script src="./../../plugins/jquery/jquery.min.js"></script>
