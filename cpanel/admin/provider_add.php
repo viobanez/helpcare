@@ -47,7 +47,7 @@
 			}
 			try{
 				$stmt = $conn->prepare("INSERT INTO users (email, password, firstname, lastname, address, contact_info, photo, service_photo, certificates_photo, govid_photo, status, type, service_cat, rate, created_on) VALUES (:email, :password, :firstname, :lastname, :address, :contact, :photo, :service_photo, :certificates_photo, :govid_photo, :status, :type, :service_cat, :rate, :created_on)");
-				$stmt->execute(['email'=>$email, 'password'=>$password, 'firstname'=>$firstname, 'lastname'=>$lastname, 'address'=>$address, 'contact'=>$contact, 'photo'=>$filename, 'service_photo'=>$filename1, 'certificates_photo'=>$filename2, 'govid_photo'=>$filename3, 'status'=>0, 'type'=>2, 'service_cat'=>$service_cat, 'rate'=>$rate, 'created_on'=>$now]);
+				$stmt->execute(['email'=>$email, 'password'=>$password, 'firstname'=>$firstname, 'lastname'=>$lastname, 'address'=>$address, 'contact'=>$contact, 'photo'=>$filename, 'service_photo'=>$filename1, 'certificates_photo'=>$filename2, 'govid_photo'=>$filename3, 'status'=>'Processing', 'type'=>2, 'service_cat'=>$service_cat, 'rate'=>$rate, 'created_on'=>$now]);
 				$_SESSION['success'] = 'Provider added successfully';
 
 			}
