@@ -1,15 +1,17 @@
 <?php
 	include 'includes/session.php';
 
-	if(isset($_POST['proactivate'])){
+	if(isset($_POST['provider_status'])){
 		$id = $_POST['id'];
-		
+		$status = $_POST['status'];
 		$conn = $pdo->open();
 
 		try{
 			$stmt = $conn->prepare("UPDATE users SET status=:status WHERE id=:id");
-			$stmt->execute(['status'=>'Accept', 'id'=>$id]);
-			$_SESSION['success'] = 'Provider activated successfully';
+			
+			$stmt->execute(['status'=>$status, 'id'=>$id]);
+
+			$_SESSION['success'] = 'Provider status updated successfully';
 		}
 		catch(PDOException $e){
 			$_SESSION['error'] = $e->getMessage();
@@ -19,7 +21,7 @@
 
 	}
 	else{
-		$_SESSION['error'] = 'Select user to activate first';
+		$_SESSION['error'] = 'Select provider to update first';
 	}
 
 	header('location: provider.php');
