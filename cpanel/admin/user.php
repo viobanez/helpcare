@@ -211,6 +211,7 @@ function getRow(id){
       $('#edit_firstname').val(response.firstname);
       $('#edit_lastname').val(response.lastname);
       $('#edit_address').val(response.address);
+      $('#edit_age').val(response.age);
       $('#edit_contact').val(response.contact_info);
       $('.fullname').html(response.firstname+' '+response.lastname);
     }
