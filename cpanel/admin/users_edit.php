@@ -8,12 +8,19 @@
 		$email = $_POST['email'];
 		$password = $_POST['password'];
 		$address = $_POST['address'];
+		$age = $_POST['age'];
 		$contact = $_POST['contact'];
 
 		$conn = $pdo->open();
 		$stmt = $conn->prepare("SELECT * FROM users WHERE id=:id");
 		$stmt->execute(['id'=>$id]);
 		$row = $stmt->fetch();
+
+		if ( $age < 18 ) {
+			$_SESSION['error'] = '18 years old below are not allowed to register';
+			header('location: user.php');
+			return;
+		}
 
 		if($password == $row['password']){
 			$password = $row['password'];
@@ -23,8 +30,8 @@
 		}
 
 		try{
-			$stmt = $conn->prepare("UPDATE users SET email=:email, password=:password, firstname=:firstname, lastname=:lastname, address=:address, contact_info=:contact WHERE id=:id");
-			$stmt->execute(['email'=>$email, 'password'=>$password, 'firstname'=>$firstname, 'lastname'=>$lastname, 'address'=>$address, 'contact'=>$contact, 'id'=>$id]);
+			$stmt = $conn->prepare("UPDATE users SET email=:email, password=:password, firstname=:firstname, lastname=:lastname, address=:address, age=:age,  contact_info=:contact WHERE id=:id");
+			$stmt->execute(['email'=>$email, 'password'=>$password, 'firstname'=>$firstname, 'lastname'=>$lastname, 'address'=>$address, 'age'=>$age, 'contact'=>$contact, 'id'=>$id]);
 			$_SESSION['success'] = 'User updated successfully';
 
 		}

@@ -13,10 +13,28 @@
   <link rel="stylesheet" href="./../../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="./../../dist/css/adminlte.min.css">
+  <style>
+  @media print{
+   .noprint{
+      display:none !important;
+   }
+   #myTable_length {
+      display:none !important;
+   }
+   #myTable_filter{
+      display:none !important;
+   }
+   .dataTables_info{
+      display:none !important;
+   }
+   .dataTables_paginate {
+      display:none !important;
+   }
+}
+  </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -25,7 +43,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Administrator</a>
+        <a href="#" class="nav-link">Administrator</a>
       </li>
     
     </ul>
@@ -75,17 +93,16 @@
           <div class="col-lg-12">
             <div class="card">
               <div class="card-body">
-              Booking Reports
+              <b><h5>Booking Reports</h5></b>
               <div class="box">
              
-              <button id="btnExport">Excel</button>
-              <button id="btnPDF">PDF</button>
-            <div class="box-body">
+              <button class="btn btn-default noprint" id="btnExport" style="margin-bottom: 10px;"> Excel </button>
+              <button  type="button"class="btn btn-default noprint"  style="margin-bottom: 10px;" onclick="window.print()"> PDF </button><br>
+            <div class="box-body" id="tab">
               <table id="myTable" class="table table-bordered">
                 <thead>
                   <th>Customer Name</th>
                   <th>Book No.</th>
-                 
                   <th>Book Date</th>
                 </thead>
                 <tbody>
@@ -130,7 +147,7 @@
   <!-- /.control-sidebar -->
 
   <!-- Main Footer -->
-  <footer class="main-footer">
+  <footer class="main-footer noprint">
     <strong>Copyright &copy; 2020 <a href="#">Helpcare CPanel</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
@@ -159,7 +176,9 @@
   //   })
   // })
 $(document).ready(function() {
-  var table = $('#myTable').dataTable();
+  var table = $('#myTable').dataTable({
+    'lengthChange': true,
+  });
     
     $("#btnExport").click(function(e) 
     {
@@ -169,13 +188,14 @@ $(document).ready(function() {
     });
 
     
-    $("#btnPDF").click(function(e) 
-    {
-    	e.preventDefault();
-        window.open('data:application/.pdf,' + 
-        escape(table[0].outerHTML));
-    });
+    // $("#btnPDF").click(function(e) 
+    // {
+    // 	e.preventDefault();
+    //     window.open('data:application/.pdf,' + 
+    //     escape(table[0].outerHTML));
+    // });
 });
+
 </script>
 <!-- jQuery -->
 <script src="./../../plugins/jquery/jquery.min.js"></script>

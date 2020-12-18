@@ -25,7 +25,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Administrator</a>
+        <a href="#" class="nav-link">Administrator</a>
       </li>
     
     </ul>
@@ -211,6 +211,7 @@ function getRow(id){
       $('#edit_firstname').val(response.firstname);
       $('#edit_lastname').val(response.lastname);
       $('#edit_address').val(response.address);
+      $('#edit_age').val(response.age);
       $('#edit_contact').val(response.contact_info);
       $('.fullname').html(response.firstname+' '+response.lastname);
     }

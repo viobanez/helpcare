@@ -25,7 +25,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Administrator</a>
+        <a href="#" class="nav-link">Administrator</a>
       </li>
     
     </ul>
@@ -237,7 +237,7 @@ function getRow(id){
 </script>
 
 <script>
-<<<<<<< Updated upstream
+
 function bookingSearch() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("myInput");
@@ -257,15 +257,15 @@ function bookingSearch() {
   }
 }
  
-=======
-  $(function () {
-    $('#example1').DataTable({
-      responsive: true,
-    });
+
+  // $(function () {
+  //   $('#example1').DataTable({
+  //     responsive: true,
+  //   });
     
-  })
+  // })
   
->>>>>>> Stashed changes
+
 </script>
 <!-- jQuery -->
 <script src="./../../plugins/jquery/jquery.min.js"></script>
