@@ -18,9 +18,10 @@
 <div class="register-box">
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="./index2.html" class="h1"><i class="fas fa-heartbeat" style="color: #3d9970;
+      <!-- <a href="./index2.html" class="h1"><i class="fas fa-heartbeat" style="color: #3d9970;
         "></i><b style="color: #3d9970;
-        "> Help</b>care</a>
+        "> Help</b>care</a> -->
+        <img src="./dist/img/logo_b.png" alt="Helpcare Logo" style="width: 300px;" >
     </div>
     <div class="card-body">
       <p class="login-box-msg">Register a new account</p>
@@ -49,6 +50,10 @@
               <span class="fas fa-user"></span>
             </div>
           </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="date" class="form-control" placeholder="Birth Date">
+          
         </div>
         <div class="input-group mb-3">
           <input type="email" class="form-control" placeholder="Email">
@@ -92,7 +97,7 @@
       </form>
 
       
-      <a href="login.html" class="text-center">I already have a account</a>
+      <a href="index.php" class="text-center">I already have a account</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
