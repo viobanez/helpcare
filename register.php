@@ -71,7 +71,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Age" name="age">
+          <input type="text" class="form-control" placeholder="First name" name="age">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
