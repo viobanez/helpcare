@@ -16,7 +16,7 @@
 				if($row['status']){
 					if(password_verify($password, $row['password'])){
 						if($row['type']){
-							$_SESSION['provider'] = $row['id'];
+							$_SESSION['providers'] = $row['id'];
 						}
 						else{
 							$_SESSION['user'] = $row['id'];

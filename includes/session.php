@@ -3,7 +3,7 @@
 	session_start();
 
 	if(isset($_SESSION['providers'])){
-		header('location: provider/dashboard.php');
+		header('location: providers/dashboard.php');
 	}
 
 	if(isset($_SESSION['user'])){

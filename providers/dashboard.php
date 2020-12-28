@@ -1,6 +1,6 @@
 <?php 
   include 'includes/session.php';
-  include 'includes/format.php'; 
+  //include 'includes/format.php'; 
 ?>
 <?php 
   $conn = $pdo->open();
@@ -40,21 +40,9 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Administrator</a>
+        <a href="index3.html" class="nav-link">Provider</a>
       </li>
     
-    </ul>
-
-    
-
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -67,21 +55,8 @@
        <span class="brand-text font-weight-light"><i class="fas fa-heartbeat" style="color: #3d9970;
     "></i> Helpcare CPanel</span>
     </a>
-
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="#" class="img-circle elevation-2" alt="">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Administrator</a>
-        </div>
-      </div> -->
-
-     
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -96,23 +71,10 @@
               </p>
             </a>
           </li>
-
           <li class="nav-item">
             <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
-              <p>Users</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
-              <p>Category</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-people-arrows"></i>
-              <p>Providers</p>
+            <i class="nav-icon far fa-sticky-note"></i>
+              <p>Bookings</p>
             </a>
           </li>
           <li class="nav-item">
@@ -140,7 +102,7 @@
     
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
+  <!-- /.content-wrapper -->  
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
