@@ -1,9 +1,5 @@
 <?php include 'includes/session.php'; ?>
-<?php
-	if(!isset($_SESSION['user'])){
-		header('location: index.php');
-	}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,11 +10,11 @@
   <!-- Google Font: Source Sans Pro -->
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> -->
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="./../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css">
   <!-- IonIcons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="./../../dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="./dist/css/adminlte.min.css">
 </head>
 <!--
 `body` tag options:
@@ -39,7 +35,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Administrator</a>
+        <a href="index3.html" class="nav-link">User</a>
       </li>
     
     </ul>
@@ -62,9 +58,8 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <!-- <img src="#" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
-       <span class="brand-text font-weight-light"><i class="fas fa-heartbeat" style="color: #3d9970;
-    "></i> Helpcare CPanel</span>
+      <img src="../images/logo.png" alt="Helpcare Logo" style="width: 230px;" >
+       <span class="brand-text font-weight-light"></span>
     </a>
 
     <!-- Sidebar -->
@@ -121,7 +116,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../logout.php" class="nav-link">
+            <a href="./logout.php" class="nav-link">
             <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>Logout</p>
             </a>
@@ -161,17 +156,17 @@
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="./../../plugins/jquery/jquery.min.js"></script>
+<script src="./plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="./../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->
-<script src="./../../dist/js/adminlte.js"></script>
+<script src="./dist/js/adminlte.js"></script>
 
 <!-- OPTIONAL SCRIPTS -->
-<script src="./../../plugins/chart.js/Chart.min.js"></script>
+<script src="./plugins/chart.js/Chart.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="./../../dist/js/demo.js"></script>
+<script src="./dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="./../../dist/js/pages/dashboard3.js"></script>
+<script src="./dist/js/pages/dashboard3.js"></script>
 </body>
 </html>
