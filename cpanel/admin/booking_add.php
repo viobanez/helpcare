@@ -8,7 +8,7 @@
 		$status = $_POST['status'];
 		$user_name = $_POST['user_name'];
 		$email = $_POST['email'];
-		$service_and_rate = $_POST['service_and_rate'];
+		// $service_and_rate = $_POST['service_and_rate'];
 		$category_name = $_POST['category_name'];
 		
 		$date_book = $_POST['date_book'];
@@ -29,8 +29,8 @@
 		else{
 			
 			try{
-				$stmt = $conn->prepare("INSERT INTO booking (book_no, status, user_name, email, service_and_rate, category_name, date_book, time, address, special_instructions, date_added) VALUES (:book_no, :status, :user_name, :email, :service_and_rate, :category_name, :date_book, :time, :address, :special_instructions, :date_added)");
-				$stmt->execute(['book_no'=>$book_no, 'status'=>$status,'user_name'=>$user_name, 'email'=>$email, 'service_and_rate'=>$service_and_rate, 'category_name'=>$category_name, 'date_book'=>$date_book, 'time'=>$time, 'address'=>$address, 'special_instructions'=>$special_instructions, 'date_added'=>$now]);
+				$stmt = $conn->prepare("INSERT INTO booking (book_no, status, user_name, email, category_name, date_book, time, address, special_instructions, date_added) VALUES (:book_no, :status, :user_name, :email, :category_name, :date_book, :time, :address, :special_instructions, :date_added)");
+				$stmt->execute(['book_no'=>$book_no, 'status'=>$status,'user_name'=>$user_name, 'email'=>$email,'category_name'=>$category_name, 'date_book'=>$date_book, 'time'=>$time, 'address'=>$address, 'special_instructions'=>$special_instructions, 'date_added'=>$now]);
 				$_SESSION['success'] = 'New Booking added successfully';
 			}
 			catch(PDOException $e){

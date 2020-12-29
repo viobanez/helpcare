@@ -125,7 +125,7 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label>Booking Status</label>
-                          <input type="text" class="form-control" name="service_and_rate" value="Processing" readonly>
+                          <input type="text" class="form-control" name="status" value="Accepted" readonly>
                           <!-- <select class="form-control" name="service_and_rate" id="status" readonly >
                               <option value="Processing"> Processing </option>
                               <option value="Confirmed"> Confirmed </option>
