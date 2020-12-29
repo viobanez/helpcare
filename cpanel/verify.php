@@ -23,7 +23,7 @@
 						// }
 					}
 					else{
-						$_SESSION['error'] = 'Incorrect Password';
+						$_SESSION['error'] = 'Invalid Password';
 					}
 				}
 				else{
@@ -31,7 +31,7 @@
 				}
 			}
 			else{
-				$_SESSION['error'] = 'Email not found';
+				$_SESSION['error'] = 'Invalid Account';
 			}
 		}
 		catch(PDOException $e){
