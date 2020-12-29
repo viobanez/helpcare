@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2020 at 06:37 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Generation Time: Dec 29, 2020 at 08:58 AM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -53,7 +53,9 @@ INSERT INTO `booking` (`id`, `email`, `user_name`, `provider_name`, `category_na
 (3, NULL, 'rt', NULL, NULL, NULL, NULL, '', NULL, 'HC2020112', '', NULL, NULL, '2020-12-13'),
 (4, NULL, 'ssss', NULL, NULL, NULL, NULL, '', NULL, 'HC2020312', '', NULL, NULL, '2020-12-13'),
 (5, NULL, 'fff', NULL, NULL, NULL, NULL, '', NULL, 'HC2020412', '', NULL, NULL, '2020-12-13'),
-(6, 'TEst@sdsd.com', 'TEst', NULL, NULL, NULL, '2020-12-14', '00:47', 'testtesttesttesttest', 'HC2020512', 'Carpentry - ?1.00', NULL, 'test11', '2020-12-13');
+(6, 'TEst@sdsd.com', 'TEst', NULL, NULL, NULL, '2020-12-14', '00:47', 'testtesttesttesttest', 'HC2020512', 'Carpentry - ?1.00', NULL, 'test11', '2020-12-13'),
+(7, 'admin@admin.com', 'Admin istrator', NULL, NULL, NULL, '2020-12-16', '09:24', 's', 'HC2020612', 'sdsd - 22', NULL, 'sss', '2020-12-16'),
+(8, 'admin@admin.com', 'Admin istrator', NULL, 'Salon', NULL, '2020-12-16', '09:27', 'rtesd', 'HC2020712', 'sdsd - 22', NULL, 'sss', '2020-12-16');
 
 -- --------------------------------------------------------
 
@@ -64,6 +66,7 @@ INSERT INTO `booking` (`id`, `email`, `user_name`, `provider_name`, `category_na
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
+  `has_sub` varchar(5) NOT NULL,
   `cat_slug` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -71,10 +74,10 @@ CREATE TABLE `category` (
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`id`, `name`, `cat_slug`) VALUES
-(1, 'Carpentry', 'carpentry'),
-(2, 'Salon', 'salon'),
-(3, 'Plumbing', 'plumbing');
+INSERT INTO `category` (`id`, `name`, `has_sub`, `cat_slug`) VALUES
+(1, 'Carpentry', '1', 'carpentry'),
+(2, 'Salon', '0', 'salon'),
+(3, 'Plumbing', '0', 'plumbing');
 
 -- --------------------------------------------------------
 
@@ -115,15 +118,18 @@ INSERT INTO `cpanel_users` (`id`, `email`, `password`, `type`, `firstname`, `las
 CREATE TABLE `sub_category` (
   `id` int(6) NOT NULL,
   `category` varchar(100) DEFAULT NULL,
-  `subcat_name` varchar(100) DEFAULT NULL
+  `subcat_name` varchar(100) DEFAULT NULL,
+  `desc_subcat` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `sub_category`
 --
 
-INSERT INTO `sub_category` (`id`, `category`, `subcat_name`) VALUES
-(8, 'Carpentry', 'Tesdt');
+INSERT INTO `sub_category` (`id`, `category`, `subcat_name`, `desc_subcat`) VALUES
+(8, 'Carpentry', 'Tesdt', ''),
+(9, 'Carpentry', 'ssss', 'sdsd'),
+(10, 'Salon', 'sss', 'ffgfgc');
 
 -- --------------------------------------------------------
 
@@ -137,17 +143,15 @@ CREATE TABLE `users` (
   `password` varchar(60) NOT NULL,
   `type` int(1) NOT NULL,
   `firstname` varchar(50) NOT NULL,
-  `middlename` varchar(255) NOT NULL,
   `lastname` varchar(50) NOT NULL,
-  `age` varchar(5) NOT NULL,
-  `birthday` varchar(50) NOT NULL,
   `address` text NOT NULL,
+  `age` varchar(5) NOT NULL,
   `contact_info` varchar(100) NOT NULL,
   `photo` varchar(200) NOT NULL,
   `service_photo` varchar(200) NOT NULL,
   `certificates_photo` varchar(200) NOT NULL,
   `govid_photo` varchar(200) NOT NULL,
-  `status` int(1) NOT NULL,
+  `status` varchar(10) NOT NULL,
   `reg_status` varchar(50) DEFAULT NULL,
   `activate_code` varchar(15) NOT NULL,
   `reset_code` varchar(15) NOT NULL,
@@ -161,16 +165,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `type`, `firstname`, `middlename`, `lastname`, `age`, `birthday`, `address`, `contact_info`, `photo`, `service_photo`, `certificates_photo`, `govid_photo`, `status`, `reg_status`, `activate_code`, `reset_code`, `created_on`, `service`, `service_cat`, `rate`) VALUES
-(1, 'test@provider.com', '$2y$10$8wY63GX/y9Bq780GBMpxCesV9n1H6WyCqcA2hNy2uhC59hEnOpNaS', 1, 'Pro', '', 'vider', '', '', '', '', 'facebook-profile-image.jpeg', '', '', '', 1, 'not verified', '', '', '2020-12-01', 'sd', 'df', '-'),
-(13, 'x@x.com', '$2y$10$8wY63GX/y9Bq780GBMpxCesV9n1H6WyCqcA2hNy2uhC59hEnOpNaS', 0, 'service', '', 'provider', '', '', 'test', '211212', 'profile.jpg', '', '', '', 1, 'not verified', '', '', '2020-12-08', 's', 'd', '-'),
-(21, 'mail@m.com', '$2y$10$.lfJdAPA3K04Jo9CN3J7jeW.sUk1HAyh8BYg9TG.aaGqLKPmlBceq', 2, 'mail', '', 'password', '', '', 'mail', '454545', 'avatar5.png', 'photo2.png', 'prod-1.jpg', 'prod-5.jpg', 0, NULL, '', '', '2020-12-14', '', 'Clean', '11'),
-(22, 'Sds@sdd.com', '$2y$10$gnky1WMna.7hKUFuY6HW0erk72S9nZst4rWXvf4hu/5vAtTJI6/DW', 2, 'Sds', '', 'sdd', '', '', 'csdfsdf', 'sdfdfdfd', 'photo1.png', 'user2-160x160.jpg', 'photo4.jpg', 'photo3.jpg', 0, NULL, '', '', '2020-12-15', '', 'sdsd', '22'),
-(23, 'esd@a.com', '$2y$10$lQS.anAOhAMZtmUQ9pN9oe.W/OflCsbIdXyEj08ZOIeryrXlCq6jO', 0, 'dasda', '', 'sdasd', '', '', 'adasd', 'asdasd', 'user2-160x160.jpg', '', '', '', 1, NULL, '', '', '2020-12-15', '', '-', '-'),
-(24, '', '$2y$10$XKZ4m9gLDMVhKukpH/o3s.YbC7XVW58wA/.nj4v3AjYvm4dyxcO3W', 0, '', '', '', '', '', '', '', '', '', '', '', 0, NULL, 'luxPdkbpqzfy', '', '2020-12-25', '', '-', '-'),
-(25, 'Sds@sdd.com1', '$2y$10$gLp811rjCy9EK.JHVVdEduthlBeqCEkDleexSPttIGl7aZS/SRYle', 0, 'Sds@sdd.com', '', 'Sds@sdd.com', '', '', '', '', '', '', '', '', 0, NULL, 'VZvYmRdq9KNn', '', '2020-12-25', '', '-', '-'),
-(26, 'aaaa@a.com', '$2y$10$OA6FTXg3nq0rvqsvKCVBJ.50TvIHvqYd4WexZ2b9pvDN592LJxg.a', 0, 'aaaa', '', 'aaaa', '', '2020-12-26', 'aaaaaaaaaaaa', '', '', '', '', '', 0, NULL, 'nZQJbWeyPdY6', '', '2020-12-25', '', '-', '-'),
-(27, 'sdsdsdsd@sd.s', '$2y$10$WcoB7Yd2PvBiMNNZGEBMn.zNlqtubxcxdLbE3xquRGurJFDqmJUAi', 0, 'sdsdsdsdsdsdsdsdsd', '', 'sdsdsd', '', '2020-12-26', 'sdsdsdsdsdsdsdsdsdsdsdsd', '', '', '', '', '', 0, NULL, 'ZYCLeU4X2P6x', '', '2020-12-25', '', '-', '-');
+INSERT INTO `users` (`id`, `email`, `password`, `type`, `firstname`, `lastname`, `address`, `age`, `contact_info`, `photo`, `service_photo`, `certificates_photo`, `govid_photo`, `status`, `reg_status`, `activate_code`, `reset_code`, `created_on`, `service`, `service_cat`, `rate`) VALUES
+(1, 'test@provider.com', '$2y$10$8wY63GX/y9Bq780GBMpxCesV9n1H6WyCqcA2hNy2uhC59hEnOpNaS', 1, 'admin', 'istrator', '', '', '', 'facebook-profile-image.jpeg', '', '', '', '1', 'not verified', '', '', '2020-12-01', 'sd', 'df', '-'),
+(13, 'p@p.c', '$2y$10$8wY63GX/y9Bq780GBMpxCesV9n1H6WyCqcA2hNy2uhC59hEnOpNaS', 1, 'service', 'provider', 'test', '19', '211212', 'profile.jpg', '', '', '', '1', 'not verified', '', '', '2020-12-08', 's', 'd', '-'),
+(23, 'u@u.c', '$2y$10$8wY63GX/y9Bq780GBMpxCesV9n1H6WyCqcA2hNy2uhC59hEnOpNaS', 0, 'dasda', 'sdasd', 'adasd', '', 'asdasd', 'user2-160x160.jpg', '', '', '', '1', NULL, '', '', '2020-12-15', '', '-', '-');
 
 --
 -- Indexes for dumped tables
@@ -214,7 +212,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -232,13 +230,13 @@ ALTER TABLE `cpanel_users`
 -- AUTO_INCREMENT for table `sub_category`
 --
 ALTER TABLE `sub_category`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

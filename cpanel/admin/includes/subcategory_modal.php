@@ -29,10 +29,19 @@
                       <input type="text" class="form-control" id="subcat_name" name="subcat_name">
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label for="edit_name" class="col-sm-3 control-label">Descriptions</label>
+
+                    <div class="col-sm-9">
+                      <!-- <input type="text" class="form-control" id="subcat_name" name="subcat_name"> -->
+                      <textarea class="form-control" name="desc_subcat"></textarea>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-              <button type="submit" class="btn btn-success btn-flat" name="subcat_add"><i class="fa fa-check-square-o"></i> Update</button>
+              <button type="submit" class="btn btn-success btn-flat" name="subcat_add"><i class="fa fa-check-square-o"></i> Add</button>
               </form>
             </div>
         </div>
@@ -64,6 +73,14 @@
 
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="sc_name" name="subcat_name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit_name" class="col-sm-3 control-label">Descriptions</label>
+
+                    <div class="col-sm-9">
+                      <textarea class="form-control" id="desc_subcat" name="desc_subcat"></textarea>
                     </div>
                 </div>
             </div>

@@ -200,6 +200,7 @@ function getRow(id){
       $('.subcatid').val(response.id);
       $('#cat_name').val(response.category);
       $('#subcat_name').val(response.subcat_name);
+      $('#desc_subcat').val(response.desc_subcat);
       $('#sc_name').val(response.subcat_name);
     }
   });
