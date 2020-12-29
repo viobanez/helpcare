@@ -12,7 +12,7 @@
               <form class="form-horizontal" method="POST" action="subcategory_add.php">
                 <input type="hidden" class="subcatid" name="id">
                 <div class="form-group">
-                    <label for="edit_name" class="col-sm-3 control-label" >Category</label>
+                    <label for="edit_name" class="col-sm-3 control-label" >Category <span style="color: red;">*</span></label>
 
                     <div class="col-sm-9">
                       <select class="form-control select2" style="width: 100%;" name="category" id="maincategory" required>
@@ -23,10 +23,10 @@
 
                 </div>
                 <div class="form-group">
-                    <label for="edit_name" class="col-sm-3 control-label">Sub Category</label>
+                    <label for="edit_name" class="col-sm-6 control-label">Sub Category <span style="color: red;">*</span></label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="subcat_name" name="subcat_name">
+                      <input type="text" class="form-control" id="subcat_name" name="subcat_name" required>
                     </div>
                 </div>
 
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="edit_name" class="col-sm-3 control-label">Sub Category</label>
+                    <label for="edit_name" class="col-sm-6 control-label">Sub Category</label>
 
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="sc_name" name="subcat_name">
