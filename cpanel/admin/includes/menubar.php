@@ -1,3 +1,35 @@
+<style>
+  
+  .bg-red, .callout.callout-def, .alert-def, .alert-error, .label-def, .modal-def .modal-body {
+    background-color: #e0e0e0 !important;
+    color: black !important;
+  }
+  .bg-green, .callout.callout-success, .alert-success, .label-success, .modal-success .modal-body {
+    background-color: #00a65a !important;
+  }
+  .bg-yellow, .callout.callout-warning, .alert-warning, .label-warning, .modal-warning .modal-body {
+    background-color: #f39c12 !important;
+  }
+  .bg-aqua, .callout.callout-info, .alert-info, .label-info, .modal-info .modal-body {
+    background-color: #00c0ef !important;
+  }
+  .bg-red, .callout.callout-danger, .alert-danger, .alert-error, .label-danger, .modal-danger .modal-body {
+    background-color: #dd4b39 !important;
+  }
+  
+  .label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+  }
+  </style>
 <aside class="main-sidebar sidebar-dark-primary ">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">

@@ -7,7 +7,12 @@
 		$password = $_POST['password'];
 		$firstname = $_POST['firstname'];
 		$lastname = $_POST['lastname'];
-		$address = $_POST['address'];
+
+		$brgy = $_POST['brgy'];
+		$street_name = $_POST['street_name'];
+		$city = $_POST['city'];
+		
+		$birthday = $_POST['birthday'];
 		$age = $_POST['age'];
 		$contact = $_POST['contact'];
 		$type = $_POST['type'];
@@ -53,8 +58,8 @@
 				move_uploaded_file($_FILES['govid_photo']['tmp_name'], '../images/'.$filename3);	
 			}
 			try{
-				$stmt = $conn->prepare("INSERT INTO users (email, password, firstname, lastname, address, age, contact_info, photo, service_photo, certificates_photo, govid_photo, status, type, service_cat, rate, created_on) VALUES (:email, :password, :firstname, :lastname, :address, :age, :contact, :photo, :service_photo, :certificates_photo, :govid_photo, :status, :type, :service_cat, :rate, :created_on)");
-				$stmt->execute(['email'=>$email, 'password'=>$password, 'firstname'=>$firstname, 'lastname'=>$lastname, 'address'=>$address, 'age'=>$age, 'contact'=>$contact, 'photo'=>$filename, 'service_photo'=>$filename1, 'certificates_photo'=>$filename2, 'govid_photo'=>$filename3, 'status'=>'Processing', 'type'=>2, 'service_cat'=>$service_cat, 'rate'=>$rate, 'created_on'=>$now]);
+				$stmt = $conn->prepare("INSERT INTO users (email, password, firstname, lastname, brgy, street_name, city, birthday, age, contact_info, photo, service_photo, certificates_photo, govid_photo, status, type, service_cat, rate, created_on) VALUES (:email, :password, :firstname, :lastname, :brgy, :street_name, :city, :birthday, :age, :contact, :photo, :service_photo, :certificates_photo, :govid_photo, :status, :type, :service_cat, :rate, :created_on)");
+				$stmt->execute(['email'=>$email, 'password'=>$password, 'firstname'=>$firstname, 'lastname'=>$lastname, 'brgy'=>$brgy, 'street_name'=>$street_name, 'city'=>$city, 'birthday'=>$birthday, 'age'=>$age, 'contact'=>$contact, 'photo'=>$filename, 'service_photo'=>$filename1, 'certificates_photo'=>$filename2, 'govid_photo'=>$filename3, 'status'=>'Processing', 'type'=>2, 'service_cat'=>$service_cat, 'rate'=>$rate, 'created_on'=>$now]);
 				
 				$_SESSION['success'] = 'Provider added successfully';
 
