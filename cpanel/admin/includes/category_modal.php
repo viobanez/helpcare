@@ -11,7 +11,7 @@
             <div class="modal-body">
               <form class="form-horizontal" method="POST" action="category_add.php">
                 <div class="form-group">
-                    <label for="name" class="col-sm-3 control-label">Name</label>
+                    <label for="name" class="col-sm-6 control-label">Category Name <span style="color: red;">*</span></label>
 
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="name" name="name" required>
@@ -20,7 +20,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-              <button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i> Save</button>
+              <button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i> Add</button>
               </form>
             </div>
         </div>
@@ -41,7 +41,7 @@
               <form class="form-horizontal" method="POST" action="category_edit.php">
                 <input type="hidden" class="catid" name="id">
                 <div class="form-group">
-                    <label for="edit_name" class="col-sm-3 control-label">Name</label>
+                    <label for="edit_name" class="col-sm-4 control-label">Category Name <span style="color: red;">*</span></label>
 
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="edit_name" name="name">

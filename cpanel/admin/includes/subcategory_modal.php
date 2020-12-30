@@ -12,7 +12,7 @@
               <form class="form-horizontal" method="POST" action="subcategory_add.php">
                 <input type="hidden" class="subcatid" name="id">
                 <div class="form-group">
-                    <label for="edit_name" class="col-sm-3 control-label" >Category</label>
+                    <label for="edit_name" class="col-sm-3 control-label" >Category <span style="color: red;">*</span></label>
 
                     <div class="col-sm-9">
                       <select class="form-control select2" style="width: 100%;" name="category" id="maincategory" required>
@@ -23,16 +23,25 @@
 
                 </div>
                 <div class="form-group">
-                    <label for="edit_name" class="col-sm-3 control-label">Sub Category</label>
+                    <label for="edit_name" class="col-sm-6 control-label">Sub Category <span style="color: red;">*</span></label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="subcat_name" name="subcat_name">
+                      <input type="text" class="form-control" id="subcat_name" name="subcat_name" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit_name" class="col-sm-3 control-label">Descriptions</label>
+
+                    <div class="col-sm-9">
+                      <!-- <input type="text" class="form-control" id="subcat_name" name="subcat_name"> -->
+                      <textarea class="form-control" name="desc_subcat"></textarea>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-              <button type="submit" class="btn btn-success btn-flat" name="subcat_add"><i class="fa fa-check-square-o"></i> Update</button>
+              <button type="submit" class="btn btn-success btn-flat" name="subcat_add"><i class="fa fa-check-square-o"></i> Add</button>
               </form>
             </div>
         </div>
@@ -60,10 +69,18 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="edit_name" class="col-sm-3 control-label">Sub Category</label>
+                    <label for="edit_name" class="col-sm-6 control-label">Sub Category</label>
 
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="sc_name" name="subcat_name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit_name" class="col-sm-3 control-label">Descriptions</label>
+
+                    <div class="col-sm-9">
+                      <textarea class="form-control" id="desc_subcat" name="desc_subcat"></textarea>
                     </div>
                 </div>
             </div>
