@@ -94,7 +94,7 @@
             <div class="box-body">
               <table id="myTable" class="table table-bordered">
                 <thead>
-                  <th>Email</th>
+                  <!-- <th>Email</th> -->
                   <th>Photo</th>
                   <th>Service Photo</th>
                   <th>Certificate Photo</th>
@@ -102,7 +102,7 @@
            
                   <th>Name</th>
                   <th>Application Status</th>
-                  <th>Date Added</th>
+                  <!-- <th>Date Added</th> -->
                   <th>Actions</th>
                 </thead>
                 <tbody>
@@ -122,7 +122,7 @@
                         $active = (!$row['status']) ? '<span class="pull-right"><a href="#prostatus" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i><i class="fa fa-edit"></i></a></span>' : '<span class="pull-right"><a href="#prostatus" class="status" data-toggle="modal" data-id="'.$row['id'].'"><i class="fa fa-check-square-o"></i><i class="fa fa-edit"></i></a></span>';
                         echo "
                           <tr>
-                            <td>".$row['email']."</td>
+                           <!-- <td>".$row['email']."</td> -->
                             <td>
                               <img src='".$image."' height='30px' width='30px'>
                               <span class='pull-right'><a href='#edit_providerphoto' class='photoprovider' data-toggle='modal' data-id='".$row['id']."'><i class='fa fa-edit'></i></a></span>
@@ -142,7 +142,7 @@
                          
                             <td>".$row['firstname'].' '.$row['lastname']."</td>
                             <td>".$row['status'].' '.$active."</td>
-                            <td>".date('M d, Y', strtotime($row['created_on']))."</td>
+                            <!-- <td>".date('M d, Y', strtotime($row['created_on']))."</td> -->
                             <td>
                             <a href='#service' data-toggle='modal' class='btn btn-info btn-sm btn-flat desc' data-id='".$row['id']."'><i class='fa fa-search'></i> View Service</a>
                               <button class='btn btn-success btn-sm editservice_cat btn-flat' data-id='".$row['id']."' id='editnewp'><i class='fa fa-edit'></i> Edit</button>
@@ -299,6 +299,9 @@ function getRow(id){
       $('#serv').html(response.service);
       $('#desc').html(response.service_cat +' - '+response.rate);
       $('#service_category').val(response.service_cat);
+
+      $('#email').html(response.email);
+      $('#date').html(response.created_on);
     
       $('#rate').val(response.rate);
       $('.name').html(response.prodname);
@@ -307,8 +310,11 @@ function getRow(id){
       $('#editpassword').val(response.password);
       $('#editfirstname').val(response.firstname);
       $('#editlastname').val(response.lastname);
-      $('#editaddress').val(response.address);
-      $('#editage').val(response.age);
+      $('#editbrgy').val(response.brgy);
+      $('#editstreet').val(response.street_name);
+      $('#editcity').val(response.city);
+      $('.editbirth').val(response.birthday);
+      $('.editage').val(response.age);
       $('#editcontact').val(response.contact_info); 
       $('#appstat').val(response.reg_status);
       $('#editservice').val(response.service);
@@ -318,6 +324,9 @@ function getRow(id){
     }
   });
 }
+
+
+
 </script>
 <script>
   function providerSearch() {

@@ -13,38 +13,7 @@
   <link rel="stylesheet" href="./../../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="./../../dist/css/adminlte.min.css">
-  <style>
-  
-  .bg-red, .callout.callout-def, .alert-def, .alert-error, .label-def, .modal-def .modal-body {
-    background-color: #e0e0e0 !important;
-    color: black !important;
-  }
-  .bg-green, .callout.callout-success, .alert-success, .label-success, .modal-success .modal-body {
-    background-color: #00a65a !important;
-  }
-  .bg-yellow, .callout.callout-warning, .alert-warning, .label-warning, .modal-warning .modal-body {
-    background-color: #f39c12 !important;
-  }
-  .bg-aqua, .callout.callout-info, .alert-info, .label-info, .modal-info .modal-body {
-    background-color: #00c0ef !important;
-  }
-  .bg-red, .callout.callout-danger, .alert-danger, .alert-error, .label-danger, .modal-danger .modal-body {
-    background-color: #dd4b39 !important;
-  }
-  
-  .label {
-    display: inline;
-    padding: .2em .6em .3em;
-    font-size: 75%;
-    font-weight: 700;
-    line-height: 1;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: .25em;
-  }
-  </style>
+ 
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -118,9 +87,10 @@
                 <thead>
                   <th>Customer Name</th>
                   <th>Book No.</th>
-                  <th>Booking Status</th>
+                  <th>Status</th>
+                  <th>Condition</th>
                   <th>Service and Rate</th>
-                  <th>Category</th>
+                  <!-- <th>Category</th> -->
                   <th>Book Date</th>
                   <th>Actions</th>
                 </thead>
@@ -134,14 +104,16 @@
                       foreach($stmt as $row){
                         //$image = (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg';
                         $status = ($row['status']) ? '<span class="label label-success">Accepted</span>' : '<span class="label label-danger">Cancelled</span>';
+                        $condition = ($row['b_condition']) ? '<span class="label label-info">Paid</span>' : '<span class="label label-warning">Processing</span>';
                     
                         echo "
                           <tr>
                             <td>".$row['user_name']."</td>
                             <td>".$row['book_no']."</td>
                             <td>".$status."</td>
+                            <td>".$condition."</td>
                             <td>".$row['service_and_rate']."</td>
-                            <td>".$row['category_name']."</td>
+                           <!-- <td>".$row['category_name']."</td> -->
                             <td>".date('M d, Y', strtotime($row['date_book']))."</td>
                             <td>
                               <a href='#instruct' data-toggle='modal' class='btn btn-info btn-sm btn-flat inst' data-id='".$row['id']."'><i class='fa fa-search'></i> Details</a>

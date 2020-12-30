@@ -9,8 +9,10 @@
             </div>
 
             <div class="modal-body">
+                <b>Email Address: </b><p id="email"></p>
                 <b>Service: </b><p id="serv"></p>
                 <b>Category and Rate: </b><p id="desc"></p>
+                <b>Date Added: </b><p id="date"></p>
             </div>
             
             <div class="modal-footer">
@@ -111,29 +113,14 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" class="form-control" name="email">
+                        <label>Email <span style="color: red;">*</span></label>
+                        <input type="text" class="form-control" name="email" required>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" class="form-control" name="password">
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Firstname</label>
-                        <input type="text" class="form-control" name="firstname">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Lastname</label>
-                        <input type="text" class="form-control" name="lastname">
+                        <label>Password <span style="color: red;">*</span></label>
+                        <input type="password" class="form-control" name="password" required>
                       </div>
                     </div>
                   </div>
@@ -141,15 +128,30 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Address</label>
-                        <textarea class="form-control" name="address"></textarea>
+                        <label>Firstname <span style="color: red;">*</span></label>
+                        <input type="text" class="form-control" name="firstname" required>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Lastname <span style="color: red;">*</span></label>
+                        <input type="text" class="form-control" name="lastname" required>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Barangay <span style="color: red;">*</span></label>
+                        <input type="text" class="form-control" name="brgy" required>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <div class="form-group">
-                          <label>Age</label>
-                          <input type="text" class="form-control" name="age">
+                          <label>Street Name <span style="color: red;">*</span></label>
+                          <input type="text" class="form-control" name="street_name" required>
                         </div>
                       </div>
                     </div>
@@ -158,14 +160,44 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Contact Info</label>
-                        <input type="text" class="form-control" name="contact">
+                        <label>City Name <span style="color: red;">*</span></label>
+                        <input type="text" class="form-control" name="city" required>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Provider Photo</label>
-                        <input type="file" class="form-control" name="photo">
+                        <div class="form-group">
+                          <label>Birthday <span style="color: red;">*</span></label>
+                          <input type="date" class="form-control" id="birthInput" name="birthday" required>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <div class="form-group">
+                          <label>Age <span style="color: red;">*</span></label>
+                          <input type="text" class="form-control" onclick="calDate()" id="getAge" name="age" required>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Contact Info <span style="color: red;">*</span></label>
+                        <input type="text" class="form-control" name="contact" required>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Provider Photo <span style="color: red;">*</span></label>
+                        <input type="file" class="form-control" name="photo" required>
                         <span> - Upload JPEG, PNG File only</span>
                       </div>
                     </div>
@@ -174,9 +206,9 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Category</label>
+                        <label>Category <span style="color: red;">*</span></label>
                         <!-- <input type="text" class="form-control" name=""> -->.
-                        <select class="form-control" name="category">
+                        <select class="form-control" name="category" required>
                         <option value="0">-- Select --</option>
                           <?php
                               $conn = $pdo->open();
@@ -199,8 +231,8 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Service Offered</label>
-                        <input type="text" class="form-control" name="service_cat">
+                        <label>Service Offered <span style="color: red;">*</span></label>
+                        <input type="text" class="form-control" name="service_cat" required>
                       </div>
                     </div>
                     
@@ -208,15 +240,15 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Charge Rate (&#8369;)</label>
-                        <input type="text" class="form-control" name="rate" value="">
+                        <label>Charge Rate (&#8369;) <span style="color: red;">*</span></label>
+                        <input type="text" class="form-control" name="rate" value="" required>
                         <span> - plus 20% for the admin maintenance fee</span>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Service Photo</label>
-                        <input type="file" class="form-control" name="service_photo">
+                        <label>Service Photo <span style="color: red;">*</span></label>
+                        <input type="file" class="form-control" name="service_photo" required>
                         <span> - Upload JPEG, PNG File only</span>
                       </div>
                     </div>
@@ -225,15 +257,15 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Service Certificate(TESDA or other certificate)</label>
-                        <input type="file" class="form-control" name="certificates_photo">
+                        <label>Service Certificate(TESDA or other certificate) <span style="color: red;">*</span></label>
+                        <input type="file" class="form-control" name="certificates_photo" required>
                         <span> - Upload JPEG, PNG or PDF File only</span>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Government ID (Indentification Card)</label>
-                        <input type="file" class="form-control" name="govid_photo">
+                        <label>Government ID (Indentification Card) <span style="color: red;">*</span></label>
+                        <input type="file" class="form-control" name="govid_photo" required>
                         <span> - Upload JPEG, PNG or PDF File only</span>
                       </div>
                     </div>
@@ -365,7 +397,7 @@
                     </div>
                   </div>
 
-                  <div class="row">
+                  <!-- <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>Address</label>
@@ -380,8 +412,52 @@
                         </div>
                       </div>
                     </div>
+                  </div> -->
+
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Barangay</label>
+                        <input type="text" class="form-control" id="editbrgy" name="brgy">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <div class="form-group">
+                          <label>Street Name</label>
+                          <input type="text" class="form-control"  id="editstreet" name="street_name">
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>City Name</label>
+                        <input type="text" class="form-control" name="city">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <div class="form-group">
+                          <label>Birthday</label>
+                          <input type="date" class="form-control editbirth" id="editbirthInput" name="birthday">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <div class="form-group">
+                          <label>Age</label>
+                          <input type="text" class="form-control editage" onclick="editcalDate()" id="editgetAge" name="age">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
@@ -787,6 +863,44 @@
         </div>
     </div>
 </div>
+
+<script>
+
+  function calDate(name, name2) {
+      document.getElementById("getAge").value = getAge(document.getElementById("birthInput").value);
+  }
+
+  function editcalDate(name, name2) {
+      document.getElementById("editgetAge").value = editgetAge(document.getElementById("editbirthInput").value);
+  }
+
+  
+  function getAge(dateString) {
+      var today = new Date();
+      var birthDate = new Date(dateString);
+      var age = today.getFullYear() - birthDate.getFullYear();
+      var m = today.getMonth() - birthDate.getMonth();
+
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+          age--;
+      }
+      return age;
+  }
+
+
+  function editgetAge(dateString) {
+      var today = new Date();
+      var birthDate = new Date(dateString);
+      var age = today.getFullYear() - birthDate.getFullYear();
+      var m = today.getMonth() - birthDate.getMonth();
+
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+          age--;
+      }
+      return age;
+  }
+
+</script>
 
 
      

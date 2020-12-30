@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2020 at 08:58 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.8
+-- Generation Time: Dec 30, 2020 at 04:03 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,8 @@ CREATE TABLE `booking` (
   `user_name` varchar(255) DEFAULT NULL,
   `provider_name` varchar(255) DEFAULT NULL,
   `category_name` varchar(255) DEFAULT NULL,
-  `status` varchar(20) DEFAULT NULL,
+  `status` varchar(25) DEFAULT '0',
+  `b_condition` varchar(5) NOT NULL DEFAULT '0',
   `date_book` date DEFAULT NULL,
   `time` varchar(8) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
@@ -48,14 +49,9 @@ CREATE TABLE `booking` (
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`id`, `email`, `user_name`, `provider_name`, `category_name`, `status`, `date_book`, `time`, `address`, `book_no`, `service_and_rate`, `modeofpayment`, `special_instructions`, `date_added`) VALUES
-(1, 'admin@mail.com', 'Admin', 'Test', 'testcat', 'Approved', '2020-12-09', '', 'Test Address', 'HC20201209', '', 'cash', NULL, '2020-12-09'),
-(3, NULL, 'rt', NULL, NULL, NULL, NULL, '', NULL, 'HC2020112', '', NULL, NULL, '2020-12-13'),
-(4, NULL, 'ssss', NULL, NULL, NULL, NULL, '', NULL, 'HC2020312', '', NULL, NULL, '2020-12-13'),
-(5, NULL, 'fff', NULL, NULL, NULL, NULL, '', NULL, 'HC2020412', '', NULL, NULL, '2020-12-13'),
-(6, 'TEst@sdsd.com', 'TEst', NULL, NULL, NULL, '2020-12-14', '00:47', 'testtesttesttesttest', 'HC2020512', 'Carpentry - ?1.00', NULL, 'test11', '2020-12-13'),
-(7, 'admin@admin.com', 'Admin istrator', NULL, NULL, NULL, '2020-12-16', '09:24', 's', 'HC2020612', 'sdsd - 22', NULL, 'sss', '2020-12-16'),
-(8, 'admin@admin.com', 'Admin istrator', NULL, 'Salon', NULL, '2020-12-16', '09:27', 'rtesd', 'HC2020712', 'sdsd - 22', NULL, 'sss', '2020-12-16');
+INSERT INTO `booking` (`id`, `email`, `user_name`, `provider_name`, `category_name`, `status`, `b_condition`, `date_book`, `time`, `address`, `book_no`, `service_and_rate`, `modeofpayment`, `special_instructions`, `date_added`) VALUES
+(12, 'admin@admin.com', 'Admin istrator', NULL, NULL, 'Accepted', '0', '2020-12-30', '21:10', 'sss', NULL, 'Carpentry', NULL, 'ss', '2020-12-30'),
+(13, 'admin@admin.com', 'Admin istrator', NULL, NULL, 'Accepted', '0', '2020-12-30', '21:10', 'ssds', 'HC20201212', 'Carpentry', NULL, '', '2020-12-30');
 
 -- --------------------------------------------------------
 
@@ -145,6 +141,10 @@ CREATE TABLE `users` (
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `address` text NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `street_name` varchar(255) NOT NULL,
+  `brgy` varchar(255) NOT NULL,
+  `birthday` varchar(15) NOT NULL,
   `age` varchar(5) NOT NULL,
   `contact_info` varchar(100) NOT NULL,
   `photo` varchar(200) NOT NULL,
@@ -165,10 +165,12 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `type`, `firstname`, `lastname`, `address`, `age`, `contact_info`, `photo`, `service_photo`, `certificates_photo`, `govid_photo`, `status`, `reg_status`, `activate_code`, `reset_code`, `created_on`, `service`, `service_cat`, `rate`) VALUES
-(1, 'test@provider.com', '$2y$10$8wY63GX/y9Bq780GBMpxCesV9n1H6WyCqcA2hNy2uhC59hEnOpNaS', 1, 'admin', 'istrator', '', '', '', 'facebook-profile-image.jpeg', '', '', '', '1', 'not verified', '', '', '2020-12-01', 'sd', 'df', '-'),
-(13, 'p@p.c', '$2y$10$8wY63GX/y9Bq780GBMpxCesV9n1H6WyCqcA2hNy2uhC59hEnOpNaS', 1, 'service', 'provider', 'test', '19', '211212', 'profile.jpg', '', '', '', '1', 'not verified', '', '', '2020-12-08', 's', 'd', '-'),
-(23, 'u@u.c', '$2y$10$8wY63GX/y9Bq780GBMpxCesV9n1H6WyCqcA2hNy2uhC59hEnOpNaS', 0, 'dasda', 'sdasd', 'adasd', '', 'asdasd', 'user2-160x160.jpg', '', '', '', '1', NULL, '', '', '2020-12-15', '', '-', '-');
+INSERT INTO `users` (`id`, `email`, `password`, `type`, `firstname`, `lastname`, `address`, `city`, `street_name`, `brgy`, `birthday`, `age`, `contact_info`, `photo`, `service_photo`, `certificates_photo`, `govid_photo`, `status`, `reg_status`, `activate_code`, `reset_code`, `created_on`, `service`, `service_cat`, `rate`) VALUES
+(1, 'test@provider.com', '$2y$10$8wY63GX/y9Bq780GBMpxCesV9n1H6WyCqcA2hNy2uhC59hEnOpNaS', 1, 'admin', 'istrator', '', '', '', '', '', '', '', 'facebook-profile-image.jpeg', '', '', '', '1', 'not verified', '', '', '2020-12-01', 'sd', 'df', '-'),
+(13, 'p@p.c', '$2y$10$8wY63GX/y9Bq780GBMpxCesV9n1H6WyCqcA2hNy2uhC59hEnOpNaS', 1, 'service', 'provider', 'test', '', '', '', '', '19', '211212', 'profile.jpg', '', '', '', '1', 'not verified', '', '', '2020-12-08', 's', 'd', '-'),
+(23, 'u@u.c', '$2y$10$8wY63GX/y9Bq780GBMpxCesV9n1H6WyCqcA2hNy2uhC59hEnOpNaS', 0, 'dasda', 'sdasd', 'adasd', '', '', '', '', '', 'asdasd', 'user2-160x160.jpg', '', '', '', '1', NULL, '', '', '2020-12-15', '', '-', '-'),
+(26, 's@a.com', '$2y$10$wYZG2tEvInlzUb5m277PLO03cGgilE1h0i1Cbq.hqj0.q1bD2NRCu', 2, 'Ret', 'Adad', '', 'vv', 'ee', 'df', '', '33', '3244', 's-l300.jpg', 's-l300.jpg', 's-l300.jpg', 's-l300.jpg', 'Processing', NULL, '', '', '2020-12-30', '', 'SAD', '22'),
+(27, 'dfdfd@a.com', '$2y$10$mS69Cqa/3FzTSpDc/nf6yuso3xlKkRB96crY/G7tuJRP0lE2Kcrmm', 2, 'dfdfd', 'dfdfd', '', '', 'dfdfd', 'dfdfd', '1990-12-30', '30', '334', 'Capturewww.PNG', 'Capturewww.PNG', 'Capturewww.PNG', 'Capturewww.PNG', 'Processing', NULL, '', '', '2020-12-30', '', 'ssss', '34');
 
 --
 -- Indexes for dumped tables
@@ -212,7 +214,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -236,7 +238,7 @@ ALTER TABLE `sub_category`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -105,7 +105,7 @@
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label>Booking No</label>
+                          <label>Booking No <span style="color: red;">*</span></label>
                           <?php
                               $conn = $pdo->open();
                               try{
@@ -124,8 +124,8 @@
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label>Booking Status</label>
-                          <input type="text" class="form-control" name="status" value="Accepted" readonly>
+                          <label>Booking Status <span style="color: red;">*</span></label>
+                          <input type="text" class="form-control" name="status" value="Accepted" readonly required>
                           <!-- <select class="form-control" name="service_and_rate" id="status" readonly >
                               <option value="Processing"> Processing </option>
                               <option value="Confirmed"> Confirmed </option>
@@ -139,14 +139,14 @@
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label>Customer Name</label>
-                          <input type="text" class="form-control" name="user_name" value="<?php echo $admin['firstname'].' '.$admin['lastname']; ?>" readonly>
+                          <label>Customer Name <span style="color: red;">*</span></label>
+                          <input type="text" class="form-control" name="user_name" value="<?php echo $admin['firstname'].' '.$admin['lastname']; ?>" readonly required>
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label>Email</label>
-                          <input type="text" class="form-control" name="email" value="<?php echo $admin['email']; ?>" readonly>
+                          <label>Email <span style="color: red;">*</span></label>
+                          <input type="text" class="form-control" name="email" value="<?php echo $admin['email']; ?>" readonly required>
                         </div>
                       </div>
                       
@@ -154,9 +154,9 @@
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label>Service Category</label>
+                          <label>Service Category and Rate <span style="color: red;">*</span></label>
                           <!-- <input type="text" class="form-control" > -->
-                          <select class="form-control" name="category_name" id="colorselector" >
+                          <select class="form-control" name="service_and_rate" id="colorselector" required>
                           <?php
                               $conn = $pdo->open();
                               try{
@@ -164,7 +164,7 @@
                                 $stmt->execute();
                                 foreach($stmt as $row){
                                   echo "
-                                      <option value='".$row['name']."'>".$row['name']."</option>
+                                      <option value='".$row['name']."'>".$row['name']." - ".$row['rate']."</option>
                                   ";
                                 }
                               }
@@ -178,25 +178,13 @@
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label>Service and Rate</label>
-                          <select class="form-control" name="service_and_rate" >
-                          <?php
-                              $conn = $pdo->open();
-                              try{
-                                $stmt = $conn->prepare("SELECT * FROM users WHERE type=:type");
-                                $stmt->execute(['type'=>2]);
-                                foreach($stmt as $row){
-                                  echo "
-                                      <option value='".$row['service_cat']." - ".$row['rate']."'>".$row['service_cat']." - ".$row['rate']."</option>
-                                  ";
-                                }
-                              }
-                              catch(PDOException $e){
-                                echo $e->getMessage();
-                              }
-                              $pdo->close();
-                            ?>
-                          </select>
+                          <label>Booking Condition <span style="color: red;">*</span></label>
+                          <input type="text" class="form-control" name="b_condition" value="Processing" readonly required>
+                          <!-- <select class="form-control" name="service_and_rate" required readonly>
+                              <option value="" > - Select - </option>
+                              <option value="Processing" selected > Processing </option>
+                              <option value="Accepted"> Accepted </option>
+                          </select> -->
                         </div>
                       </div>
                     </div>
@@ -204,28 +192,28 @@
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label>Date</label>
-                          <input type="date" class="form-control" name="date_book">
+                          <label>Date <span style="color: red;">*</span></label>
+                          <input type="date" class="form-control" name="date_book" required>
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label>Time</label>
-                          <input type="time" class="form-control" name="time">
+                          <label>Time <span style="color: red;">*</span></label>
+                          <input type="time" class="form-control" name="time" required>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label>Address</label>
+                          <label>Address <span style="color: red;">*</span></label>
                           <!-- <input type="text" class="form-control" placeholder="Enter ..." disabled=""> -->
-                          <textarea class="form-control" name="address"></textarea>
+                          <textarea class="form-control" name="address" required></textarea>
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label>Extra Notes</label>
+                          <label>Extra Notes <span style="color: gray;">(optional)</span></label>
                           <!-- <input type="text" class="form-control" placeholder="Enter ..." disabled=""> -->
                           <textarea class="form-control" name="special_instructions"></textarea>
                         </div>
