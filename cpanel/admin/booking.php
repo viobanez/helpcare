@@ -118,9 +118,10 @@
                 <thead>
                   <th>Customer Name</th>
                   <th>Book No.</th>
-                  <th>Booking Status</th>
+                  <th>Status</th>
+                  <th>Condition</th>
                   <th>Service and Rate</th>
-                  <th>Category</th>
+                  <!-- <th>Category</th> -->
                   <th>Book Date</th>
                   <th>Actions</th>
                 </thead>
@@ -134,14 +135,16 @@
                       foreach($stmt as $row){
                         //$image = (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg';
                         $status = ($row['status']) ? '<span class="label label-success">Accepted</span>' : '<span class="label label-danger">Cancelled</span>';
+                        $condition = ($row['b_condition']) ? '<span class="label label-info">Paid</span>' : '<span class="label label-warning">Processing</span>';
                     
                         echo "
                           <tr>
                             <td>".$row['user_name']."</td>
                             <td>".$row['book_no']."</td>
                             <td>".$status."</td>
+                            <td>".$condition."</td>
                             <td>".$row['service_and_rate']."</td>
-                            <td>".$row['category_name']."</td>
+                           <!-- <td>".$row['category_name']."</td> -->
                             <td>".date('M d, Y', strtotime($row['date_book']))."</td>
                             <td>
                               <a href='#instruct' data-toggle='modal' class='btn btn-info btn-sm btn-flat inst' data-id='".$row['id']."'><i class='fa fa-search'></i> Details</a>
